@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+       <!-- 是否开启动态调用方法 -->
+<!-- 	<constant name="struts.enable.DynamicMethodInvocation"
+		value="false" /> -->
+		<!-- 开发者模式，开启状态，修改部分代码不需要重启 -->
+<!-- 	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="GBK" />
+	 -->
+	<!-- name解决多个命名重复问题 namespace相当于springmvc中的控制层类之上的@RequestMapping()-->
+	<package name="loginAction" namespace="/" extends="struts-default">
+       
+       <!-- 用户名密码登录 -->
+     <action name="login-action" class="com.qst.action.UserAction" method="login">
+       <result name="login">/login.jsp</result> <!-- 成功和失败的跳转 -->
+       <result name="main">/main.jsp</result>
+       <result name="success">/success.jsp</result>
+       <result name="input">/login.jsp</result>
+       
+     </action>
+    
+          <!-- 用户注册 -->
+   <action name="register-action" class="com.qst.action.UserAction" method="register">
+       <!-- 成功和失败的跳转 -->
+       <result name="index">/index.jsp</result>
+       <result name="success">/login.jsp</result>
+        <result name="register">/register.jsp</result>
+        <result name="input">/register.jsp</result>
+       
+     </action>
+
+     
+	</package>
+	<!-- Add packages here -->
+</struts>
