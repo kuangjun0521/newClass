@@ -1,10 +1,14 @@
 package com.qst.action;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.qst.dao.FirstDao;
 import com.qst.dao.UserDao;
+import com.qst.pojo.First;
 import com.qst.pojo.User;
 
 public class UserAction extends ActionSupport{
@@ -16,6 +20,9 @@ public class UserAction extends ActionSupport{
 	
 	@Autowired
 	UserDao userdao;
+	
+	@Autowired
+	FirstDao firstdao;
 	
 	User user;
 
@@ -39,10 +46,17 @@ public class UserAction extends ActionSupport{
 		if(user1!=null) {
 			
 		if(user1.getMail().equals(user.getMail())&&user1.getPassword().equals(user.getPassword())) {
-			
+			user.setUser_id(user1.getUser_id());
 			ActionContext ac = ActionContext.getContext();
 			ac.getSession().put("user1", user1);
+			
 			if(user1.getUser_id()==1) {
+				
+				//查询一级课程名称和id
+			/*List<First> first = firstdao.selectFirst();
+			ActionContext ac1 = ActionContext.getContext();
+			ac1.getSession().put("first", first);*/
+			
 				return "main";
 			}else {
 				return "success";

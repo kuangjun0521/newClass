@@ -12,6 +12,10 @@ p{
 text-align:center;
 font-size:20px;
 }
+input{
+width:300px;
+height:30px;
+}
 </style>
 <body>
 <include src="head.jsp"></include>
@@ -20,7 +24,7 @@ font-size:20px;
 
 <br><br>
 
-<input type="button" value="创建课程"><br><br>
-<input type="button" value="上传视频">
+ <a href="selectsecond-action"><input type="button" value="创建课程"></a><br><br>
+ <a href="selectthird-action"><input type="button" value="上传视频"></a>
 </body>
 </html>

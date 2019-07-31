@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+       <!-- 是否开启动态调用方法 -->
+<!-- 	<constant name="struts.enable.DynamicMethodInvocation"
+		value="false" /> -->
+		<!-- 开发者模式，开启状态，修改部分代码不需要重启 -->
+<!-- 	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="GBK" />
+	 -->
+	<!-- name解决多个命名重复问题 namespace相当于springmvc中的控制层类之上的@RequestMapping()-->
+	<package name="addclassAction" namespace="/" extends="struts-default,json-default">
+       
+       <!-- 创建一级课程 -->
+     <action name="addfirst-action" class="com.qst.action.CourseAction" method="addfirst">
+       <result name="success">/addfirstClass.jsp</result> <!-- 成功和失败的跳转 -->
+       <result name="error">/addfirstClass.jsp</result> 
+       
+     </action>
+    
+           <!-- 查询一级课程 -->
+     <action name="selectfirst-action" class="com.qst.action.CourseAction" method="selectfirst">
+       <result name="success">/addsecondClass.jsp</result> <!-- 成功和失败的跳转 -->
+       <result name="error">/addfirstClass.jsp</result> 
+       
+     </action>
+    
+    
+         <!-- 创建二级课程 -->
+     <action name="addsecond-action" class="com.qst.action.CourseAction" method="addsecond">
+       <result name="success">/addsecondClass.jsp</result> <!-- 成功和失败的跳转 -->
+       <result name="error">/addfirstClass.jsp</result> 
+
+     </action>
+     
+              <!-- 查询二级课程 -->
+     <action name="selectsecond-action" class="com.qst.action.CourseAction" method="selectsecond">
+       <result name="success">/addthirdClass.jsp</result> <!-- 成功和失败的跳转 -->
+       <result name="error">/addsecondClass.jsp</result> 
+       
+     </action>
+     
+        <!-- 创建三级课程 -->
+     <action name="addthird-action" class="com.qst.action.CourseAction" method="addthird">
+       <result name="success">/addfirstClass.jsp</result> <!-- 成功和失败的跳转 -->
+       <result name="error">/addthirdClass.jsp</result> 
+
+     </action>
+          <!-- 观看课程 -->
+   <action name="selectClass-action" class="com.qst.action.CourseAction" method="selectAllClass">
+       <!-- 成功和失败的跳转 -->
+
+       <result name="success">/selectClass.jsp</result>
+       
+       
+       
+       <!-- 传图片 -->
+     </action>
+     		<action name="uploadImage" class="com.qst.action.ClassAction" method="uploadImage">
+			<result name="success" type="json">
+				<param name="root">map</param>
+			</result>
+		</action>
+	</package>
+	<!-- Add packages here -->
+</struts>

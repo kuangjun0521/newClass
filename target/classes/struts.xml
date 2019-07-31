@@ -5,6 +5,6 @@
 <struts>
 
 	<include file="user.xml"></include>
-	<include file="news.xml"></include>
+	<include file="course.xml"></include>
 	<!-- Add packages here -->
 </struts>

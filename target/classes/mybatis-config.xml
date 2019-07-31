@@ -10,6 +10,8 @@
 	<!-- 配置映射文件Mapper的位置 -->
 	<mappers>
 		<mapper resource="com/qst/mapper/UserDaoMapper.xml" />
+		<mapper resource="com/qst/mapper/FirstDaoMapper.xml" />
+		<mapper resource="com/qst/mapper/CourseDaoMapper.xml" />
 	</mappers>
 </configuration>
 

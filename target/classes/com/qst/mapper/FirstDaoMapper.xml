@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.dao.FirstDao">
+<select id="selectFirst"  resultType="First">
+ 
+ select * from tb_first
+</select>
+
+<!-- 添加一级课程 -->
+<insert id="insertOneFirst" parameterType="First">
+
+insert into tb_first(first_name) values(#{first_name})
+
+</insert>
+
+<!-- 根据名称查询某个一级课程是否存在 -->
+<select id="selectOneFirst" parameterType="First" resultType="First">
+select * from tb_first where first_name = #{first_name}
+</select>
+
+
+<!-- 根据名称查询某个二级课程是否存在 -->
+<select id="selectOneSecond" parameterType="Second" resultType="Second">
+select * from tb_second where second_name = #{second_name}
+</select>
+
+
+<!-- 添加二级课程 -->
+<insert id="insertOneSecond" parameterType="Second">
+
+insert into tb_second(first_id,second_name) values(#{first_id},#{second_name})
+
+</insert>
+
+<select id="selectSecond"  resultType="Second">
+ 
+ select * from tb_second
+</select>
+
+<select id="selectThird"  resultType="Third">
+ 
+ select * from tb_third
+</select>
+
+</mapper>

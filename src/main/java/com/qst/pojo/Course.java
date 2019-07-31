@@ -1,18 +1,23 @@
 package com.qst.pojo;
 
-import com.mysql.jdbc.Blob;
 
 public class Course {
 
 	private int user_id;
 	private String course_name;
 	private String course_desc;
-	private Blob course_img;
+	private String course_img;
 	private String course_teacher;
 	private String course_type;
 	private int second_id;
+	private int third_id;
 	
-	
+	public int getThird_id() {
+		return third_id;
+	}
+	public void setThird_id(int third_id) {
+		this.third_id = third_id;
+	}
 	public Course() {
 		super();
 	}
@@ -34,10 +39,11 @@ public class Course {
 	public void setCourse_desc(String course_desc) {
 		this.course_desc = course_desc;
 	}
-	public Blob getCourse_img() {
+
+	public String getCourse_img() {
 		return course_img;
 	}
-	public void setCourse_img(Blob course_img) {
+	public void setCourse_img(String course_img) {
 		this.course_img = course_img;
 	}
 	public String getCourse_teacher() {
