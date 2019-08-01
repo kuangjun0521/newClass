@@ -9,10 +9,10 @@
 </head>
 <style>
 		.footer{   /* 底部样式 */
+		    width:100%;
 			height: 300px;
-			background: #808080;
+			background: #808080; 
 			color: #FFFFFF;
-			margin-top:20px;
 			
 		}
 		.footer-one{

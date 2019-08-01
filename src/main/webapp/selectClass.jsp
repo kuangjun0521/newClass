@@ -55,6 +55,7 @@
 		padding-top: 20px;
 		float: left;
 		margin-left: 20px;
+		box-shadow: 0px 1px 25px 5px #f9f9f9;
 	}
 	.col-md-8 p{  /* 检索条件样式 */
 		font-size: 20px;
@@ -92,19 +93,19 @@
 				}
 			}
 		</script>
-	
+
 	<div class="col-lg-4 col-md-4">
 			<div class="first-order">
-			<c:forEach items="${firstlist}" var="u" varStatus="vs">
+			<c:forEach items="${firstlist1}" var="u" varStatus="vs">
 					<div class="one">
-					<li><a>${u.first_name}</a></li>
+					<li><a href="selectbyfirst-action?first.first_id=${u.first_id }">${u.first_name}</a></li>
 					</div>
 					
 					<div class="second-order">
-					<c:forEach items="${secondlist}" var="n" varStatus="vs">
+					<c:forEach items="${secondlist1}" var="n" varStatus="vs">
 					
 					<c:if test="${u.first_id eq n.first_id}">
-						<li class="lia"><a>${n.second_name}</a></li>
+						<li class="lia"><a href="selectbysecond-action?second.second_id=${n.second_id}">${n.second_name}</a></li>
 					</c:if>
 					
                     </c:forEach>
@@ -117,47 +118,26 @@
 		<div class="col-lg-8 col-md-8">
 			
 		<div class="bigdiv">
+		<br><br>
+		<form action="selectbytext-action" method="post">
 			<p>检索条件</p><br>
 			<p><input type="button" value="课程名称" class="input1"><input type="text" name="course.course_name" placeholder="请输入课程名" class="input2"></p><br>
 			<p><input type="submit" value="检索" class="input3"/></p><br>
-			
-		
+		</form>
+		    <c:forEach items="${courselist}" var="cou" varStatus="vs">
+		    
 			<div class="img1">
-				<span>${course.course_id}</span><br>
-				<span>${course.course_id}</span><br>
-				<img src="img/hot2.jpg" /><br>
-				<span>${course.course_id}|</span><br>
-				<span>${course.course_id}</span><br>
-				
+			<span>${cou.course_name}</span><br>
+			<span>${cou.course_desc}</span><br>
+			<img src="${cou.course_img}" /><br>
+			<span>${cou.course_teacher}|</span>
+			<span>${cou.course_type}</span><br>
 			</div>
 			
-			<div class="img1">
-				<span>${course.course_id}</span><br>
-				<span>${course.course_id}</span><br>
-				<img src="img/hot2.jpg" /><br>
-				<span>${course.course_id}|</span><br>
-				<span>${course.course_id}</span><br>
-				
-			</div>
-			
-			<div class="img1">
-				<span>${course.course_id}</span><br>
-				<span>${course.course_id}</span><br>
-				<img src="img/hot2.jpg" /><br>
-				<span>${course.course_id}|</span><br>
-				<span>${course.course_id}</span><br>
-				
-			</div>
-			
-			<div class="img1">
-				<span>${course.course_id}</span><br>
-				<span>${course.course_id}</span><br>
-				<img src="img/hot2.jpg" /><br>
-				<span>${course.course_id}|</span><br>
-				<span>${course.course_id}</span><br>
-				
-			</div>
+		</c:forEach>
+
 		</div>
 </div>
+
 </body>
 </html>

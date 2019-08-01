@@ -29,9 +29,9 @@
   
   <form action="addsecond-action" method="post">
   <h3>请选择一级课程：</h3>
-	<select>
-		<c:forEach items="${firstlist}" var="u" varStatus="vs">
-			<option value="${u.first_id}" name="second.first_id">${u.first_name}</option>
+	<select name="second.first_id">
+		<c:forEach items="${firstlist1}" var="u" varStatus="vs">
+			<option value="${u.first_id}">${u.first_name}</option>
 		</c:forEach>
     
 	</select>

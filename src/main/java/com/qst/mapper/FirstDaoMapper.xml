@@ -42,4 +42,20 @@ insert into tb_second(first_id,second_name) values(#{first_id},#{second_name})
  select * from tb_third
 </select>
 
+<select id="selectCourse"  resultType="Course">
+ 
+ select * from tb_course
+</select>
+
+<!-- 根据一级课程id查询到二级课程 -->
+<select id="selectSecondbyFirst"  resultType="Second" parameterType="First">
+ 
+ select * from tb_second where first_id = #{first_id}
+</select>
+
+<!-- 根据二级课程id查询到三级课程 -->
+<select id="selectThirdbySecond"  resultType="Course" parameterType="Second">
+ 
+ select * from tb_course where second_id = #{second_id}
+</select>
 </mapper>

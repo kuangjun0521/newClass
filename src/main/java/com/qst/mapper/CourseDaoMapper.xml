@@ -9,4 +9,19 @@ insert into tb_course(user_id,course_name,course_desc,course_img,course_teacher,
 
 </insert>
 
+<select id="selectCourse" resultType="Course">
+
+select  * from  tb_course;
+</select>
+
+
+<select id="selectThirdbyText" resultType="Course" parameterType="Course">
+
+select  * from  tb_course where 1=1
+<choose>
+<when test="course_name!=null">
+and course_name like '%${course_name}%'
+</when>
+</choose>
+</select>
 </mapper>

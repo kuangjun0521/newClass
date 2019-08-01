@@ -56,7 +56,16 @@ public class CourseAction extends ActionSupport{
 	List<First> firstlist;
     List<Second> secondlist;
     List<Third> thirdlist;
+    List<Course> courselist;
 	
+	public List<Course> getCourselist() {
+		return courselist;
+	}
+
+	public void setCourselist(List<Course> courselist) {
+		this.courselist = courselist;
+	}
+
 	public List<Second> getSecondlist() {
 		return secondlist;
 	}
@@ -102,12 +111,8 @@ public class CourseAction extends ActionSupport{
 	}
 	
 	public String selectAllClass() {
-		//查询一级课程名称和id
-		firstlist = firstdao.selectFirst();
-		
-		secondlist = firstdao.selectSecond();
-		
-		thirdlist = firstdao.selectThird();
+		//查询所有三级课程
+		courselist = firstdao.selectCourse();
 		/*ActionContext ac1 = ActionContext.getContext();
 		ac1.getSession().put("first", first);*/
 		return "success";
@@ -159,10 +164,6 @@ public class CourseAction extends ActionSupport{
 	public String selectsecond() {
 		secondlist = firstdao.selectSecond();
 		
-		for(Second s:secondlist) {
-			System.out.println(s.getSecond_id()+"======");
-		}
-		System.out.println();
 		if(secondlist!=null) {
 			return "success";
 		}else {
@@ -175,12 +176,47 @@ public class CourseAction extends ActionSupport{
 	
 	//添加新的三级课程
 		public String addthird() {
-		  System.out.println(course.getSecond_id()+"-----");
-			coursedao.addCourse(course);
-			JOptionPane.showMessageDialog(null,"创建成功了哦！");
-			return "success";
-				
+         System.out.println(course.getCourse_img()+"图片地址");
+		  coursedao.addCourse(course);
+		  JOptionPane.showMessageDialog(null,"创建成功了哦！");
+		  return "success";
+				/*return "error";*/
 		}
+		
+		
+		
+		//查询一级课程目录下面的所有三级课程
+		public String selectbyfirst() {
+			System.out.println(first.getFirst_id()+"====");
+			secondlist = firstdao.selectSecondbyFirst(first);//查询到二级课程
+			if(secondlist.isEmpty()) {   //判断是否有二级课程
+				return "error";
+			}else {
+				//根据查询到的二级课程来查询三级课程
+				for(Second s: secondlist) {
+					courselist = firstdao.selectThirdbySecond(s);
+				}
+				return "success";	
+			}
+			
+		}
+		
+		
+		//查询二级课程目录下面的所有三级课程
+				public String selectbysecond() {
+					System.out.println(second.getSecond_id()+"=====");
+					courselist = firstdao.selectThirdbySecond(second);//查询到二级课程	
+					return "success";	
+				}
+				
+				
+		//查询文本框中输入的课程名称
+				public String selectbytext() {
+					System.out.println(course.getCourse_name()+"][][]");
+					courselist = coursedao.selectThirdbyText(course);//查询到三级课程	
+					return "success";	
+		}
+				
 	//上传图片
 /*	 public String uploadImage() {
 	    	String path = ServletActionContext.getServletContext().getRealPath("/upload/");

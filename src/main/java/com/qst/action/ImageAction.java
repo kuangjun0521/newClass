@@ -43,7 +43,8 @@ public class ImageAction extends ActionSupport{
 	}
 	
 	 public String uploadImage() {
-	    	String path = ServletActionContext.getServletContext().getRealPath("/upload/");
+		 System.out.println("============");
+	    	String path = "E:\\work\\";
 			 //String fileName = myFile.getName(); 
 			 File dirf = new File(path);
 				// 不存在则创建
@@ -55,9 +56,9 @@ public class ImageAction extends ActionSupport{
 					saveFile.getParentFile().mkdirs();      //则创建新的多级文件夹
 				}
 			 FileUtil.copy(myFile, saveFile);
-			 String url = "upload/"+myFileFileName;
+			 String url = "E:\\work\\"+myFileFileName;
 			 map.put("src", url);
-	    	 return Action.SUCCESS;
+	    	 return SUCCESS;
 	     }
 
 }

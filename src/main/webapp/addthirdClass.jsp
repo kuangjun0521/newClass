@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="js/include.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <title>创建课程</title>
 </head>
 	<style>
@@ -17,13 +18,13 @@
 			border-radius: 10px;
 			box-shadow: 0px 1px 25px 5px #808080;
 		}
-		input{
-			width: 200px;
-			height: 20px;
+		.input1{
+			width: 300px;
+			height: 30px;
 			border-radius: 5px;
 			font-size: 20px;
 		}
-		.button{
+		#button{
 		 background: orange;
 		 color: #FFFFFF;
 		 height: 30px;
@@ -33,33 +34,34 @@
 <include src="head.jsp"></include>
 
 <br>
-		<div class="center">
-		<p>创建课程</p>
+		<div class="center"><br><br>
+		<h3>创建课程</h3>
 		<br>
 		<form action="addthird-action" method="post" enctype="multipart/form-data">
-		${user.user_id}
-		<input type="hidden" name="course.user_id" value="${user.user_id }"/>
-		课程名称：<input type="text" name="course.course_name"/><br><br>
+		${user1.user_id}
+		<input type="hidden" name="course.user_id" value="${user1.user_id }"/>
+		课程名称：<input type="text" name="course.course_name" class="input1"/><br><br>
 		
-		课程描述：<input type="text" name="course.course_desc"/><br><br>
-		<input type="hidden" name="course.course_img" id="picture_src">
+		课程描述：<input type="text" name="course.course_desc" class="input1"/><br><br>
+		<input type="hidden" name="course.course_img" id="picture_src"><br>
 	       封面图片：<input type="file" name="file" id="file" accept="image/*"/>
 	       
-	    <button  onClick="imgSubmit()" value="提交" style="width:50px; height:30px;"></button>
+	    <input type="button"  onClick="imgSubmit()" value="提交" style="width:50px; height:30px;">
 	    
 	    <br><br>
-		课程讲师：<input type="text" name="course.course_teacher"/><br><br>
-		课程所属：<input type="text" name="course.course_type"/><br><br>
+		课程讲师：<input type="text" name="course.course_teacher" class="input1"/><br><br>
+		课程所属：<input type="text" name="course.course_type" class="input1"/><br><br>
 		二级课程：
-		<select>
-		<c:forEach items="${secondlist}" var="u" varStatus="vs">
-		${u.second_id}
-			<option value="${u.second_id}" name="course.second_id">${u.second_name}</option>
+		<select name="course.second_id">
+		<c:forEach items="${secondlist1}" var="u" varStatus="vs">
+		
+			<option value="${u.second_id}">${u.second_name}</option>
+			
 		</c:forEach>
     
 	</select>
         <br><br>
-		<input type="submit" value="创&nbsp;&nbsp;建" class="button"/>
+		<input type="submit" value="创&nbsp;&nbsp;建" id="button" class="input1"/>
 	  </form>
 	  <br><br>
 	  
@@ -80,7 +82,6 @@
          
           
  	function imgSubmit(){
-					alert("abc");
 			var file=document.getElementById("file").files[0];//获取文件对象
 			if(typeof(file)=="undefined"||file.size<=0){
 				alert("请选择图片");
@@ -98,9 +99,9 @@
 				contentType:false,
 				dataType:"json",
 				success:function(result){
-					console.log("上传成功");
+					alert("上传成功");
 					console.log(result.src);
-					document.getElementById("picture-src").value=result.src;
+					document.getElementById("picture_src").value=result.src;
 				}
 			})
 	}

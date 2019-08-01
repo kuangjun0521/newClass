@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import com.qst.pojo.Course;
 import com.qst.pojo.First;
 import com.qst.pojo.Second;
 import com.qst.pojo.Third;
@@ -13,15 +14,17 @@ import com.qst.pojo.Third;
 @Mapper
 public interface FirstDao {
 
-	//查询所有一级课程名称
+	//查询所有一级课程
 	public List<First>  selectFirst();
 	
-	//查询所有二级课程名称
+	//查询所有二级课程
 	public List<Second> selectSecond();
 	
-	//查询所有三级课程名称
+	//查询所有三级课程
 	public List<Third> selectThird();
 	
+	//查询所有三级课程
+	public List<Course> selectCourse();
 	
 	//根据一级课程名称查找该课程是否存在
 	public First selectOneFirst(First first);
@@ -34,4 +37,10 @@ public interface FirstDao {
 		
 	//添加一个二级课程
 	public void insertOneSecond(Second second);
+	
+	//根据一级课程id查询二级课程
+	public List<Second> selectSecondbyFirst(First first);
+	
+	//根据二级课程id查询到三级课程
+	public List<Course> selectThirdbySecond(Second second);
 }
