@@ -45,7 +45,7 @@
 			color: rosybrown;
 		}
 		.img1{  /* qq图片设置 */
-		    margin-left: -150px;
+		    margin:0 auto;
 			margin-top: 30px;
 		}
 		
@@ -53,7 +53,8 @@
 	</style>
 <body>
 欢迎进入登录界面！
-	<img src="image/login2.jpg"/>
+<br>
+	<img src="img/login2.jpg"/>
 		<form action="login-action" method="post">
 			<div>
             <span>邮&nbsp;箱：</span>

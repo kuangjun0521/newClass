@@ -6,6 +6,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.qst.pojo.Course;
+import com.qst.pojo.First;
+import com.qst.pojo.Second;
+import com.qst.pojo.User;
 @Repository
 @Mapper
 public interface CourseDao {
@@ -17,4 +20,13 @@ public interface CourseDao {
 	
 	//根据输入的课程名称查询课程
 	public List<Course> selectThirdbyText(Course course);
+	
+    //根据管理员id查询到三级课程
+	public List<Course> selectMyCourse(User user);
+	
+	//根据三级课程里面的二级id查询到二级课程
+	public List<Second> selectMySecond(List<Course> course);
+	
+	//根据二级课程里面的一级id查询到一级课程
+	public List<First> selectMyFirst(List<Second> second);
 }

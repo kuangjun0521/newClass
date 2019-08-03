@@ -2,8 +2,11 @@ package com.qst.action;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -13,6 +16,7 @@ import com.qst.pojo.Course;
 import com.qst.pojo.First;
 import com.qst.pojo.Second;
 import com.qst.pojo.Third;
+import com.qst.pojo.User;
 
 public class CourseAction extends ActionSupport{
 
@@ -31,13 +35,23 @@ public class CourseAction extends ActionSupport{
 	
 	@Autowired
 	ThirdDao thirddao;*/
-	
+	User user;
 	Course course;
 	First first;
 	Second second;
 	Third third;
+	HttpServletRequest request;
+	HttpSession session;
 	
-    public Second getSecond() {
+    public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Second getSecond() {
 		return second;
 	}
 
@@ -111,12 +125,21 @@ public class CourseAction extends ActionSupport{
 	}
 	
 	public String selectAllClass() {
+		//将所有信息存入session之中
+        request = ServletActionContext.getRequest();
+        session = request.getSession();  //定义session来存放数据
 		//查询所有三级课程
 		courselist = firstdao.selectCourse();
+		firstlist = firstdao.selectFirst();
+		secondlist = firstdao.selectSecond();
+		session.setAttribute("firstlist", firstlist);
+		session.setAttribute("secondlist", secondlist);
+		session.setAttribute("courselist", courselist);
 		/*ActionContext ac1 = ActionContext.getContext();
 		ac1.getSession().put("first", first);*/
 		return "success";
 	}
+	
 	
 	//创建一级课程
 	public String addfirst() {
@@ -188,12 +211,12 @@ public class CourseAction extends ActionSupport{
 		//查询一级课程目录下面的所有三级课程
 		public String selectbyfirst() {
 			System.out.println(first.getFirst_id()+"====");
-			secondlist = firstdao.selectSecondbyFirst(first);//查询到二级课程
-			if(secondlist.isEmpty()) {   //判断是否有二级课程
+			List<Second> secondlist1 = firstdao.selectSecondbyFirst(first);//查询到二级课程
+			if(secondlist1.isEmpty()) {   //判断是否有二级课程
 				return "error";
 			}else {
 				//根据查询到的二级课程来查询三级课程
-				for(Second s: secondlist) {
+				for(Second s: secondlist1) {
 					courselist = firstdao.selectThirdbySecond(s);
 				}
 				return "success";	
@@ -216,6 +239,24 @@ public class CourseAction extends ActionSupport{
 					courselist = coursedao.selectThirdbyText(course);//查询到三级课程	
 					return "success";	
 		}
+				
+				//根据一级id查询一级课程
+				public String selectoneFirst() {
+					first = firstdao.selectoneFirst(first);
+					return "success";
+				}
+				
+				//根据二级id查询二级课程
+				public String selectoneSecond() {
+					second = firstdao.selectoneSecond(second);
+					return "success";
+				}
+				
+				//根据三级id查询三级课程
+				public String selectoneCourse() {
+					course = firstdao.selectoneCourse(course);
+					return "success";
+				}
 				
 	//上传图片
 /*	 public String uploadImage() {

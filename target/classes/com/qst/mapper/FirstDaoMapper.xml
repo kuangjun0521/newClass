@@ -17,8 +17,20 @@ insert into tb_first(first_name) values(#{first_name})
 <select id="selectOneFirst" parameterType="First" resultType="First">
 select * from tb_first where first_name = #{first_name}
 </select>
+<!-- 根据一级id查询一级课程 -->
+<select id="selectoneFirst" parameterType="First" resultType="First">
+select * from tb_first where first_id = #{first_id}
+</select>
 
+<!-- 根据二级id查询二级课程 -->
+<select id="selectoneSecond" parameterType="Second" resultType="Second">
+select * from tb_second where second_id = #{second_id}
+</select>
 
+<!-- 根据三级id查询三级课程 -->
+<select id="selectoneCourse" parameterType="Course" resultType="Course">
+select * from tb_course where third_id = #{third_id}
+</select>
 <!-- 根据名称查询某个二级课程是否存在 -->
 <select id="selectOneSecond" parameterType="Second" resultType="Second">
 select * from tb_second where second_name = #{second_name}

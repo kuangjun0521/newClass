@@ -54,6 +54,12 @@
        <result name="success">/selectClass.jsp</result>
      </action>
      
+   <!--   后台管理查询所有的课程 -->
+      <action name="selectAllClass-action" class="com.qst.action.CourseAction" method="selectMyClass">
+       <!-- 成功和失败的跳转 -->
+       <result name="success">/adminAllClass.jsp</result>
+     </action>
+     
             <!-- 根据一级课程查询三级课程 -->
    <action name="selectbyfirst-action" class="com.qst.action.CourseAction" method="selectbyfirst">
        <!-- 成功和失败的跳转 -->
@@ -73,6 +79,12 @@
        <!-- 成功和失败的跳转 -->
        <result name="success">/selectClass.jsp</result>
      </action>
+     
+        <action name="selectfirst-action" class="com.qst.action.CourseAction" method="selectoneFirst">
+       <!-- 成功和失败的跳转 -->
+       <result name="success">/selectClass.jsp</result>
+     </action>
+     
      <!-- 传图片 -->
      		<action name="uploadImage" class="com.qst.action.ImageAction" method="uploadImage">
      	 	<interceptor-ref name="defaultStack"/>

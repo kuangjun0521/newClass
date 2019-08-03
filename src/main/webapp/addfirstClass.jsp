@@ -9,11 +9,40 @@
 <title>创建课程</title>
 </head>
 <style>
-.div1 {
-	width: 30%;
-	float: left;
-	margin-left: 20px;
-}
+	.div1{  /* 整个div */
+			margin-top: 20px;
+			text-align: center;
+			height:200px;
+		}
+		.text2{  /* 课程名称的样式 */
+			width: 100px;
+			height: 37px;
+			border-bottom-left-radius: 5px;
+			border-top-left-radius: 5px;
+			background: #F0AD4E;
+			font-size: 18px;
+			font-family: 微软雅黑;
+		}
+		.text1{ /* 输入文本框的样式 */
+			width: 300px;
+			height: 37px;
+			border-bottom-right-radius: 5px;
+			border-top-right-radius: 5px;
+			padding-top: 0px;
+			font-size: 18px;
+			font-family: 微软雅黑;
+		}
+		.text3{  /* 提交按钮的样式 */
+			width: 300px;
+			height: 35px;
+			font-size: 24px;
+			font-family: 微软雅黑;
+			background: orange;
+			border-radius: 5px;
+		}
+		.text1,.text2,.text3{
+			border: 1px solid #006400;
+		}
 </style>
 <body>
 	<include src="head.jsp"></include>
@@ -32,32 +61,14 @@
 
 	<br>
 
-<%-- 	<c:forEach items="${firstlist}" var="u" varStatus="vs">
-		<div class="div1">
-			<li><a href="javascript:;">${u.first_name}</a></li> <br>
-
-			<c:forEach items="${secondlist}" var="n" varStatus="vs">
-
-				<c:if test="${u.first_id eq n.first_id}">
-					<li class="lia"><a>${n.second_name}</a></li>
-
-					<c:forEach items="${thirdlist}" var="w" varStatus="vs">
-						<c:if test="${n.second_id eq w.second_id}">
-							<li class="lia"><a>${w.third_name}</a></li>
-						</c:if>
-					</c:forEach>
-					<input type="button" value="创建三级课程">
-				</c:if>
-			</c:forEach>
-			<br> <input type="button" value="创建二级课程">
-		</div>
-	</c:forEach> --%>
-
 	
 	<form action="addfirst-action" method="post">
 	
-	 课程名称：<input type="text" name="first.first_name"><br>
-	 <input type="submit" value="创建">
+	<div class="div1">
+	<input type="button" value="课程名称" class="text2"/><input type="text" name="first.first_name" class="text1"/><br><br>
+	<br>
+	<input type="submit" value="创建" class="text3"/>
+	</div>
 	</form>
 	
 

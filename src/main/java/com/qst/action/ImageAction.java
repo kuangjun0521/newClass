@@ -56,8 +56,9 @@ public class ImageAction extends ActionSupport{
 					saveFile.getParentFile().mkdirs();      //则创建新的多级文件夹
 				}
 			 FileUtil.copy(myFile, saveFile);
-			 String url = "E:\\work\\"+myFileFileName;
+			 String url = "/upload/"+myFileFileName;
 			 map.put("src", url);
+			 System.out.println(url);
 	    	 return SUCCESS;
 	     }
 

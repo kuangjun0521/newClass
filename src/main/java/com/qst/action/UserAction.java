@@ -65,12 +65,12 @@ public class UserAction extends ActionSupport{
 			
 			if(user1.getUser_id()==1) {
 				//当角色为管理员时
-				List<First> firstlist1 = firstdao.selectFirst();//将所有信息存入
-				List<Second> secondlist1 = firstdao.selectSecond();
-				List<Course> courselist1 = coursedao.selectCourse();
-			    session.setAttribute("firstlist1", firstlist1);
-			    session.setAttribute("secondlist1", secondlist1);
-			    session.setAttribute("courselist1", courselist1);
+				List<First> firstlist = firstdao.selectFirst();//将所有信息存入
+				List<Second> secondlist = firstdao.selectSecond();
+				List<Course> courselist = coursedao.selectCourse();
+			    session.setAttribute("firstlist", firstlist);
+			    session.setAttribute("secondlist", secondlist);
+			    session.setAttribute("courselist", courselist);
 			    session.setAttribute("user1", user1);
 				return "main";
 			}else {

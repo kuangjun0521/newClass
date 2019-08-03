@@ -41,7 +41,6 @@
 <div class="middle"> 
 <img src="img/headline.jpg" style="height: 300px; width:100%;" />
 
-欢迎你：${user1.user_name} <br>
 
 <h3 style="text-align: center; margin-top: 40px;">精品课程</h3>
 <div class="small">

@@ -18,7 +18,7 @@ p{
 			height: 40px;
 			border-radius: 8px;
 			background: orange;
-			font-size: 20px;
+			font-size: 24px;
 			
 		}
 		.bigdiv{

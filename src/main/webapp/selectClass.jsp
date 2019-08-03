@@ -67,16 +67,24 @@
 		background:#F2EDED;
 		border-top-left-radius: 5px;
 		border-bottom-left-radius: 5px;
+		background:orange;
+		height:36px;
 	}
 	.bigdiv .input2{ /* 输入文本框 */
 		width: 300px;
 		border-top-right-radius: 5px;
 		border-bottom-right-radius: 5px;
+		height:36px;
+		padding-top:2px;
 	}
 	.bigdiv .input3{
 		width: 100px;
 		background: orange;
-		border-radius: 10px;
+		border-radius: 5px;
+	}
+	.bigdiv .input1,.input2,.input3{
+	border:1px solid #808080;
+	font-size:18px;
 	}
 	</style>
 
@@ -96,16 +104,28 @@
 
 	<div class="col-lg-4 col-md-4">
 			<div class="first-order">
-			<c:forEach items="${firstlist1}" var="u" varStatus="vs">
+			<c:forEach items="${firstlist}" var="u" varStatus="vs">
 					<div class="one">
-					<li><a href="selectbyfirst-action?first.first_id=${u.first_id }">${u.first_name}</a></li>
+					<li><a href="selectbyfirst-action?first.first_id=${u.first_id }">${u.first_name}</a>
+					<c:if test="${user1.privilege==1 }">
+					<a href="updatefirst-action?first.first_id=${u.first_id}"><i
+							class="fa fa-pencil-square-o"></i></a> /<a
+						href="deletefirst-action?first.first_id=${u.first_id }"><i
+							class="fa fa-trash"></i></a></c:if>
+					</li>
 					</div>
 					
 					<div class="second-order">
-					<c:forEach items="${secondlist1}" var="n" varStatus="vs">
+					<c:forEach items="${secondlist}" var="n" varStatus="vs">
 					
 					<c:if test="${u.first_id eq n.first_id}">
-						<li class="lia"><a href="selectbysecond-action?second.second_id=${n.second_id}">${n.second_name}</a></li>
+						<li class="lia"><a href="selectbysecond-action?second.second_id=${n.second_id}">${n.second_name}</a>
+						<c:if test="${user1.privilege==1 }"><a
+						href="updatesecond-action?second.second_id=${n.second_id}"><i
+							class="fa fa-pencil-square-o"></i></a> /<a
+						href="deletesecond-action?second.second_id=${n.second_id }"><i
+							class="fa fa-trash"></i></a></c:if>
+						</li>
 					</c:if>
 					
                     </c:forEach>
@@ -121,9 +141,10 @@
 		<br><br>
 		<form action="selectbytext-action" method="post">
 			<p>检索条件</p><br>
-			<p><input type="button" value="课程名称" class="input1"><input type="text" name="course.course_name" placeholder="请输入课程名" class="input2"></p><br>
+			<p><input type="button" value="课程名称" class="input1"><input type="text" name="course.course_name" placeholder="请输入课程名..." class="input2"></p><br>
 			<p><input type="submit" value="检索" class="input3"/></p><br>
 		</form>
+		<hr>
 		    <c:forEach items="${courselist}" var="cou" varStatus="vs">
 		    
 			<div class="img1">
@@ -131,7 +152,15 @@
 			<span>${cou.course_desc}</span><br>
 			<img src="${cou.course_img}" /><br>
 			<span>${cou.course_teacher}|</span>
-			<span>${cou.course_type}</span><br>
+			<span>${cou.course_type}${user1.privilege}</span>
+			<c:if test="${user1.privilege==1 }">
+			<a href="updatecourse-action?course.third_id=${cou.third_id}"><i
+			class="fa fa-pencil-square-o"></i></a> /
+			<a href="deletecourse-action?course.third_id=${cou.third_id }"><i
+			class="fa fa-trash"></i></a>
+			</c:if>
+			<br>
+			
 			</div>
 			
 		</c:forEach>
