@@ -2,21 +2,32 @@ package com.qst.pojo;
 
 public class Video {
 
-	private int video_id;
+	private int id;
 	private String video_desc;
 	private String video_address;
 	private int third_id;
-	
+	private String video_id;
 	
 	public Video() {
 		super();
 	}
-	public int getVideo_id() {
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getVideo_id() {
 		return video_id;
 	}
-	public void setVideo_id(int video_id) {
+
+	public void setVideo_id(String video_id) {
 		this.video_id = video_id;
 	}
+
 	public String getVideo_desc() {
 		return video_desc;
 	}

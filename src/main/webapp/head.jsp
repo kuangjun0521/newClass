@@ -128,11 +128,6 @@
 									<li class="register">
 										<a href="register.jsp">用户注册</a>
 									</li>
-									<c:if test="${user1.privilege==1}">
-								    <li class="classes">
-										<a href="selectAllClass-action?user.user_id=${user1.user_id }">后台管理</a>
-									</li>	
-									</c:if>
 									<li class="register">
 										<a href="#">${user1.user_name},欢迎你！</a>
 									</li>

@@ -108,7 +108,7 @@
 					<div class="one">
 					<li><a href="selectbyfirst-action?first.first_id=${u.first_id }">${u.first_name}</a>
 					<c:if test="${user1.privilege==1 }">
-					<a href="updatefirst-action?first.first_id=${u.first_id}"><i
+					<a href="selectonefirst-action?first.first_id=${u.first_id}"><i
 							class="fa fa-pencil-square-o"></i></a> /<a
 						href="deletefirst-action?first.first_id=${u.first_id }"><i
 							class="fa fa-trash"></i></a></c:if>
@@ -121,7 +121,7 @@
 					<c:if test="${u.first_id eq n.first_id}">
 						<li class="lia"><a href="selectbysecond-action?second.second_id=${n.second_id}">${n.second_name}</a>
 						<c:if test="${user1.privilege==1 }"><a
-						href="updatesecond-action?second.second_id=${n.second_id}"><i
+						href="selectonesecond-action?second.second_id=${n.second_id}"><i
 							class="fa fa-pencil-square-o"></i></a> /<a
 						href="deletesecond-action?second.second_id=${n.second_id }"><i
 							class="fa fa-trash"></i></a></c:if>
@@ -150,13 +150,13 @@
 			<div class="img1">
 			<span>${cou.course_name}</span><br>
 			<span>${cou.course_desc}</span><br>
-			<img src="${cou.course_img}" /><br>
+			<a href="showAllVideo-action?video.third_id=${cou.third_id }"><img src="${cou.course_img}" /></a><br>
 			<span>${cou.course_teacher}|</span>
 			<span>${cou.course_type}${user1.privilege}</span>
 			<c:if test="${user1.privilege==1 }">
-			<a href="updatecourse-action?course.third_id=${cou.third_id}"><i
+			<a href="selectonethird-action?course.third_id=${cou.third_id}"><i
 			class="fa fa-pencil-square-o"></i></a> /
-			<a href="deletecourse-action?course.third_id=${cou.third_id }"><i
+			<a href="deletethird-action?course.third_id=${cou.third_id }"><i
 			class="fa fa-trash"></i></a>
 			</c:if>
 			<br>

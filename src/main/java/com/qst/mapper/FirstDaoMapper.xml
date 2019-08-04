@@ -70,4 +70,18 @@ insert into tb_second(first_id,second_name) values(#{first_id},#{second_name})
  
  select * from tb_course where second_id = #{second_id}
 </select>
+
+<!-- 更新一个一级课程 -->
+<update id="updateOneFirst" parameterType="First">
+update tb_first set first_name=#{first_name} where first_id=#{first_id}
+</update>
+<!-- 更新一个二级课程 -->
+<update id="updateOneSecond" parameterType="Second">
+update tb_second set second_name=#{second_name},first_id=#{first_id} where second_id=#{second_id}
+</update>
+<!-- 更新一个三级课程 -->
+<update id="updateOneThird" parameterType="Course">
+update tb_course set course_name=#{course_name},course_desc=#{course_desc},course_img=#{course_img},
+course_teacher=#{course_teacher},course_type=#{course_type},second_id=#{second_id} where third_id=#{third_id}
+</update>
 </mapper>

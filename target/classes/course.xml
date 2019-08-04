@@ -42,6 +42,14 @@
        
      </action> 
      
+     
+             <!-- 查询三级课程 -->
+      <action name="selectthird-action" class="com.qst.action.CourseAction" method="selectthird">
+       <result name="success">/addVideo.jsp</result> <!-- 成功和失败的跳转 -->
+       <result name="error">/addthirdClass.jsp</result> 
+       
+     </action> 
+     
         <!-- 创建三级课程 -->
      <action name="addthird-action" class="com.qst.action.CourseAction" method="addthird">
        <result name="success">/addfirstClass.jsp</result> <!-- 成功和失败的跳转 -->
@@ -80,7 +88,35 @@
        <result name="success">/selectClass.jsp</result>
      </action>
      
-        <action name="selectfirst-action" class="com.qst.action.CourseAction" method="selectoneFirst">
+     <!-- 查找到一个要修改的一级课程 -->
+        <action name="selectonefirst-action" class="com.qst.action.CourseAction" method="selectoneFirst">
+       <result name="success">/updatefirst.jsp</result>
+     </action>
+     
+       <!-- 查找到一个要修改的二级课程 -->
+        <action name="selectonesecond-action" class="com.qst.action.CourseAction" method="selectoneSecond">
+       <result name="success">/updatesecond.jsp</result>
+     </action>
+     
+       <!-- 查找到一个要修改的三级课程 -->
+        <action name="selectonethird-action" class="com.qst.action.CourseAction" method="selectoneThird">
+       <result name="success">/updatethird.jsp</result>
+     </action>
+      
+      <!-- 更新一个一级课程 -->
+      <action name="updatefirst-action" class="com.qst.action.CourseAction" method="updateOneFirst">
+       <!-- 成功和失败的跳转 -->
+       <result name="success">/selectClass.jsp</result>
+     </action>
+     
+     <!-- 更新一个二级课程 -->
+      <action name="updatesecond-action" class="com.qst.action.CourseAction" method="updateOneSecond">
+       <!-- 成功和失败的跳转 -->
+       <result name="success">/selectClass.jsp</result>
+     </action>
+     
+     <!-- 更新一个二级课程 -->
+      <action name="updatethird-action" class="com.qst.action.CourseAction" method="updateOneThird">
        <!-- 成功和失败的跳转 -->
        <result name="success">/selectClass.jsp</result>
      </action>

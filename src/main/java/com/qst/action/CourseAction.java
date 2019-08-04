@@ -206,7 +206,18 @@ public class CourseAction extends ActionSupport{
 				/*return "error";*/
 		}
 		
-		
+		//查询所有的三级课程
+		public String selectthird() {
+			courselist = firstdao.selectCourse();
+			
+			if(courselist!=null) {
+				return "success";
+			}else {
+			    JOptionPane.showMessageDialog(null,"还没有三级课程哦！");
+				return "error";
+			}
+			
+		}
 		
 		//查询一级课程目录下面的所有三级课程
 		public String selectbyfirst() {
@@ -253,11 +264,28 @@ public class CourseAction extends ActionSupport{
 				}
 				
 				//根据三级id查询三级课程
-				public String selectoneCourse() {
+				public String selectoneThird() {
 					course = firstdao.selectoneCourse(course);
 					return "success";
 				}
 				
+				//更新一个一级课程
+				public String updateOneFirst() {
+					firstdao.updateOneFirst(first);
+					return "success";
+				}
+				
+				//更新一个二级课程
+				public String updateOneSecond() {
+					firstdao.updateOneSecond(second);
+					return "success";
+				}
+				
+				//更新一个三级课程
+				public String updateOneThird() {
+					firstdao.updateOneThird(course);
+					return "success";
+				}
 	//上传图片
 /*	 public String uploadImage() {
 	    	String path = ServletActionContext.getServletContext().getRealPath("/upload/");

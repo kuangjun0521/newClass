@@ -43,4 +43,19 @@ select * from tb_course where user_id = #{user_id}
         #{item}
     </foreach>
 </select>
+
+<!-- 上传视频 -->
+<insert id="insertVideo" parameterType="Video">
+insert into tb_video (video_desc,video_address,video_id,third_id) values(#{video_desc},#{video_address},#{video_id},#{third_id})
+</insert>
+
+<!-- 查询视频信息 -->
+<select id="selectAllVideo" parameterType="Video" resultType="Video">
+select * from tb_video where third_id = #{third_id}
+</select>
+
+<!-- 播放视频 -->
+<select id="selectVideo" parameterType="Video" resultType="Video">
+select * from tb_video where id = #{id}
+</select>
 </mapper>

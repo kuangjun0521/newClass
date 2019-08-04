@@ -52,4 +52,13 @@ public interface FirstDao {
 
 	// 根据三级课程id查询到三级课程
 	public Course selectoneCourse(Course course);
+
+	// 根据一级课程id更新一个一级课程
+	public void updateOneFirst(First first);
+
+	// 根据二级课程id更新一个二级课程
+	public void updateOneSecond(Second second);
+
+	// 根据三级课程id更新一个三级课程
+	public void updateOneThird(Course course);
 }

@@ -9,6 +9,7 @@ import com.qst.pojo.Course;
 import com.qst.pojo.First;
 import com.qst.pojo.Second;
 import com.qst.pojo.User;
+import com.qst.pojo.Video;
 @Repository
 @Mapper
 public interface CourseDao {
@@ -29,4 +30,13 @@ public interface CourseDao {
 	
 	//根据二级课程里面的一级id查询到一级课程
 	public List<First> selectMyFirst(List<Second> second);
+	
+	//上传视频
+	public void insertVideo(Video video);
+	
+	//查询视频
+	public List<Video> selectAllVideo(Video video);
+	
+	//播放视频
+	public Video selectVideo(Video video);
 }
