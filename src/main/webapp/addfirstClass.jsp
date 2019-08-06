@@ -12,15 +12,17 @@
 	.div1{  /* 整个div */
 			margin-top: 20px;
 			text-align: center;
-			height:200px;
+			height:300px;
 		}
 		.text2{  /* 课程名称的样式 */
 			width: 100px;
-			height: 37px;
+			height: 42px;
 			border-bottom-left-radius: 5px;
 			border-top-left-radius: 5px;
-			background: #F0AD4E;
+			background: #5e6182;
 			font-size: 18px;
+			padding-top:0px;
+			color:#fff;
 			font-family: 微软雅黑;
 		}
 		.text1{ /* 输入文本框的样式 */
@@ -34,20 +36,20 @@
 		}
 		.text3{  /* 提交按钮的样式 */
 			width: 300px;
-			height: 35px;
+			height: 43px;
 			font-size: 24px;
-			font-family: 微软雅黑;
-			background: orange;
+			color:#fff;
+			font-family: 隶书;
+			background: #5e6182;
 			border-radius: 5px;
 		}
 		.text1,.text2,.text3{
-			border: 1px solid #006400;
+			border: 2px solid #0f100f;
 		}
 </style>
 <body>
 	<include src="head.jsp"></include>
-
-	<script type="text/javascript ">
+<script type="text/javascript ">
 			function account(obj){
 				console.log(obj);
 				let ul=obj.getElementsByTagName('ul')[0];
@@ -57,17 +59,16 @@
 					ul.classList.remove('active');
 				}
 			}
-		</script>
-
+		</script> 
 	<br>
 
-	
+	<br>
 	<form action="addfirst-action" method="post">
 	
 	<div class="div1">
 	<input type="button" value="课程名称" class="text2"/><input type="text" name="first.first_name" class="text1"/><br><br>
-	<br>
-	<input type="submit" value="创建" class="text3"/>
+	<br><br>
+	<input type="submit" value="创&nbsp;&nbsp;&nbsp;建" class="text3"/>
 	</div>
 	</form>
 	

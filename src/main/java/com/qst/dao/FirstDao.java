@@ -41,8 +41,11 @@ public interface FirstDao {
 	// 根据一级课程id查询二级课程
 	public List<Second> selectSecondbyFirst(First first);
 
-	// 根据二级课程id查询到三级课程
-	public List<Course> selectThirdbySecond(Second second);
+	// 根据多个二级课程id查询到三级课程
+	public List<Course> selectThirdbySecond(List<Second> list);
+
+	// 根据一个二级课程来查询对应的所有三级课程
+	public List<Course> selectThirdbySecond1(Second second);
 
 	// 根据一级课程id查询到一级课程
 	public First selectoneFirst(First first);
@@ -61,4 +64,13 @@ public interface FirstDao {
 
 	// 根据三级课程id更新一个三级课程
 	public void updateOneThird(Course course);
+
+	// 删除一个一级课程
+	public void deleteOneFirst(First first);
+
+	// 删除一个二级课程
+	public void deleteOneSecond(Second second);
+
+	// 删除一个三级课程
+	public void deleteOneThird(Course course);
 }

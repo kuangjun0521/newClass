@@ -8,27 +8,39 @@
 <title>创建课程</title>
 </head>
 <style>
-p{
-			font-size: 24px;
+.bigdiv p{
+			font-size: 30px;
 			margin-top: 20px;
-			font-family: 微软雅黑;
 		}
 		input{
 			width: 300px;
-			height: 40px;
+			height: 48px;
 			border-radius: 8px;
-			background: orange;
-			font-size: 24px;
+			background: #eab44f;
+			font-size: 26px;
+		    font-family:华文新魏;
+		    border:2px solid #585311;
 			
 		}
 		.bigdiv{
 			margin: 0 auto;
 			text-align: center;
+			height:400px;
 		}
 </style>
 <body>
 <include src="head.jsp"></include>
-
+<script type="text/javascript ">
+			function account(obj){
+				console.log(obj);
+				let ul=obj.getElementsByTagName('ul')[0];
+				if(ul.className=='dropdown-links'){
+					ul.classList.add('active');
+				}else{
+					ul.classList.remove('active');
+				}
+			}
+		</script> 
 	 <div class="bigdiv">
 	 <br><br>
 	  <p>菜&nbsp;&nbsp;单</p>
@@ -38,5 +50,7 @@ p{
  <a href="selectsecond-action"><input type="button" value="创建课程"></a><br><br><br>
  <a href="selectthird-action"><input type="button" value="上传视频"></a>
  </div> 
+<include src="footer.jsp"></include>
+ 
 </body>
 </html>

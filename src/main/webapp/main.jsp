@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="js/include.js" type="text/javascript" charset="utf-8"></script>
-
 <title>Insert title here</title>
 </head>
 <style>
@@ -27,17 +26,7 @@
 <body>
 <include src="head.jsp"></include>
 		
-		<script type="text/javascript ">
-			function account(obj){
-				console.log(obj);
-				let ul=obj.getElementsByTagName('ul')[0];
-				if(ul.className=='dropdown-links'){
-					ul.classList.add('active');
-				}else{
-					ul.classList.remove('active');
-				}
-			}
-		</script>
+
 <div class="middle"> 
 <img src="img/headline.jpg" style="height: 300px; width:100%;" />
 
@@ -52,5 +41,16 @@
 	</div>
 	
 	<include src="footer.jsp"></include>
+	<script type="text/javascript ">
+			function account(obj){
+				console.log(obj);
+				let ul=obj.getElementsByTagName('ul')[0];
+				if(ul.className=='dropdown-links'){
+					ul.classList.add('active');
+				}else{
+					ul.classList.remove('active');
+				}
+			}
+		</script> 
 </body>
 </html>

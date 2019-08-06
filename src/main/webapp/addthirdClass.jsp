@@ -30,12 +30,12 @@
 
 .text2 { /* 课程名称的样式 */
 	width: 120px;
-	height: 37px;
+	height: 43px;
 	border-bottom-left-radius: 5px;
 	border-top-left-radius: 5px;
-	background: #F0AD4E;
+	background: #e4caa5;
 	font-size: 16px;
-	padding-top: 3px;
+	padding-top: 2px;
 	font-family: 微软雅黑;
 }
 
@@ -48,7 +48,15 @@
 	padding-top: 1px;
 	font-family: 微软雅黑;
 }
-
+.text4 { /* 下拉文本框的样式 */
+	width: 300px;
+	height: 43px;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	font-size: 18px;
+	padding-top: 0px;
+	font-family: 微软雅黑;
+}
 .text3 { /* 提交按钮的样式 */
 	width: 300px;
 	height: 38px;
@@ -63,7 +71,7 @@
 }
 
 .text1, .text2, .text3,.text5 {
-	border: 1px solid #006400;
+	border: 2px solid #545f54;
 }
 
  #picture_src { /*  将图片地址显示文本框和选择文件按钮重叠  */
@@ -76,14 +84,15 @@
 }
 
 .tijiao1 { /* 提交图片按钮 */
-	width: 40px;
-	height: 37px;
+	width: 45px;
+	height: 43px;
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
 	border: 1px solid #008000;
 	padding-top: 5px;
 	margin-left: 260px;
 	z-index:9999;
+	background:#b7acac;
 }
 .text5 { /* 图片选择输入框样式 */
 	width: 265px;
@@ -96,11 +105,14 @@
 </style>
 <body>
 	<include src="head.jsp"></include>
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 	<br>
 	<div class="center">
 		<br>
 		<h1>创建课程</h1>
+		<br>
 		<hr />
+		<br>
 		<form action="addthird-action" method="post"
 			enctype="multipart/form-data">
 			<input type="hidden" name="course.user_id" value="${user1.user_id }" />
@@ -117,9 +129,11 @@
 			<input type="button" value="封面图片" class="text2" /><input type="text" name="course.course_img" class="text5" id="picture_src">
 			<input type="button"  onClick="imgSubmit()" value="提交" class="tijiao1">
 			<br> <input type="file" name="file" id="file"
-				accept="image/*" /> <input type="button"
+				accept="image/*" /> <br>
+				
+				<input type="button"
 				value="二级课程" class="text2" /><select name="course.second_id"
-				class="text1">
+				class="text4">
 				<c:forEach items="${secondlist}" var="u" varStatus="vs">
 
 					<option value="${u.second_id}">${u.second_name}</option>

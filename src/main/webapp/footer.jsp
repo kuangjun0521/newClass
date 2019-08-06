@@ -46,7 +46,7 @@
 				<p><i class="fa fa-envelope"></i> 联系邮箱：1508785927</p>
 				<p><i class="fa fa-map-marker"></i> 公司地址：德州市德城区德州学院</p>
 			</div>
-			
+			<br>
 			<div class="footer-last">
 				<hr />
 			<span>德州创新学堂2018 @all rights reserved</span>

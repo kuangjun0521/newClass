@@ -57,17 +57,13 @@
 <body>
 	<include src="head.jsp"></include>
 
-	<script type="text/javascript ">
-			function account(obj){
-				console.log(obj);
-				let ul=obj.getElementsByTagName('ul')[0];
-				if(ul.className=='dropdown-links'){
-					ul.classList.add('active');
-				}else{
-					ul.classList.remove('active');
-				}
-			}
-		</script>
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<!-- stats -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.countup.js"></script>
+	<script src="js/owl.carousel.js"></script>
 
 	 <div class="div1">
 		 <br><br>

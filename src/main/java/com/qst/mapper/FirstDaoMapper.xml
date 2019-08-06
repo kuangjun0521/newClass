@@ -65,8 +65,17 @@ insert into tb_second(first_id,second_name) values(#{first_id},#{second_name})
  select * from tb_second where first_id = #{first_id}
 </select>
 
-<!-- 根据二级课程id查询到三级课程 -->
-<select id="selectThirdbySecond"  resultType="Course" parameterType="Second">
+<!-- 根据好多的二级课程id查询到好多三级课程 -->
+<select id="selectThirdbySecond"  resultType="Course" parameterType="List">
+ 
+ select * from tb_course where second_id in
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+        #{item.second_id}
+    </foreach>
+</select>
+
+<!-- 根据一个二级课程id查询到三级课程 -->
+<select id="selectThirdbySecond1"  resultType="Course" parameterType="Second">
  
  select * from tb_course where second_id = #{second_id}
 </select>
@@ -84,4 +93,19 @@ update tb_second set second_name=#{second_name},first_id=#{first_id} where secon
 update tb_course set course_name=#{course_name},course_desc=#{course_desc},course_img=#{course_img},
 course_teacher=#{course_teacher},course_type=#{course_type},second_id=#{second_id} where third_id=#{third_id}
 </update>
+
+<!-- 删除一个一级课程 -->
+<delete id="deleteOneFirst" parameterType="First">
+delete from tb_first where first_id = #{first_id}
+</delete>
+
+<!-- 删除一个二级课程 -->
+<delete id="deleteOneSecond" parameterType="Second">
+delete from tb_second where second_id = #{second_id}
+</delete>
+
+<!-- 删除一个三级课程 -->
+<delete id="deleteOneThird" parameterType="Course">
+delete from tb_course where third_id = #{third_id}
+</delete>
 </mapper>

@@ -222,14 +222,14 @@ public class CourseAction extends ActionSupport{
 		//查询一级课程目录下面的所有三级课程
 		public String selectbyfirst() {
 			System.out.println(first.getFirst_id()+"====");
-			List<Second> secondlist1 = firstdao.selectSecondbyFirst(first);//查询到二级课程
+			List<Second> secondlist1 = firstdao.selectSecondbyFirst(first);//查询到二级课程 
+			courselist = firstdao.selectCourse();
 			if(secondlist1.isEmpty()) {   //判断是否有二级课程
+			    courselist.clear();
 				return "error";
 			}else {
-				//根据查询到的二级课程来查询三级课程
-				for(Second s: secondlist1) {
-					courselist = firstdao.selectThirdbySecond(s);
-				}
+				//根据查询到的所有二级课程来查询对应的三级课程
+				courselist = firstdao.selectThirdbySecond(secondlist1);
 				return "success";	
 			}
 			
@@ -239,7 +239,7 @@ public class CourseAction extends ActionSupport{
 		//查询二级课程目录下面的所有三级课程
 				public String selectbysecond() {
 					System.out.println(second.getSecond_id()+"=====");
-					courselist = firstdao.selectThirdbySecond(second);//查询到二级课程	
+					courselist = firstdao.selectThirdbySecond1(second);//查询到二级课程	
 					return "success";	
 				}
 				
@@ -272,18 +272,63 @@ public class CourseAction extends ActionSupport{
 				//更新一个一级课程
 				public String updateOneFirst() {
 					firstdao.updateOneFirst(first);
+					selectAllClass();
 					return "success";
 				}
 				
 				//更新一个二级课程
 				public String updateOneSecond() {
 					firstdao.updateOneSecond(second);
+					selectAllClass();
 					return "success";
 				}
 				
 				//更新一个三级课程
 				public String updateOneThird() {
 					firstdao.updateOneThird(course);
+					selectAllClass();
+					return "success";
+				}
+				
+				//删除一个一级课程
+				public String deleteOneFirst() {
+					List<Second> secondlist1 = firstdao.selectSecondbyFirst(first);//查询到二级课程
+					firstdao.deleteOneFirst(first);
+					if(!secondlist1.isEmpty()) {
+						//根据查询到的所有二级课程来查询对应的三级课程
+						courselist = firstdao.selectThirdbySecond(secondlist1);
+						if(!courselist.isEmpty()) {
+							for(Course c:courselist) {   //删除多个三级课程
+								firstdao.deleteOneThird(c);
+							}
+						}
+						for(Second s: secondlist1) {
+							firstdao.deleteOneSecond(s);  //删除多个二级课程
+						}
+					}
+					selectAllClass();//重新查询一边所有信息
+						return "success";	
+				}
+				
+				//删除一个二级课程
+				public String deleteOneSecond() {
+					//根据查询到的所有二级课程来查询对应的三级课程
+					courselist = firstdao.selectThirdbySecond1(second);
+					firstdao.deleteOneSecond(second);
+					
+					if(!courselist.isEmpty()) {
+				       for(Course c: courselist) {
+				    	   firstdao.deleteOneThird(c);
+				       }
+					}
+					selectAllClass();
+					return "success";
+				}
+				
+				//删除一个三级课程
+				public String deleteOneThird() {
+					firstdao.deleteOneThird(course);
+					selectAllClass();
 					return "success";
 				}
 	//上传图片

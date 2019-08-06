@@ -23,13 +23,13 @@
 		}
 		.text2{  /* 课程名称的样式 */
 			width: 130px;
-			height: 39px;
+			height: 45px;
 			border-bottom-left-radius: 5px;
 			border-top-left-radius: 5px;
-			background: orange;
+			background: #cc8e1d;
 			font-size: 16px;
 			font-family: 微软雅黑;
-			padding-top: 3px;
+			padding-top: 2px;
 		}
 		.text1{ /* 输入文本框的样式 */
 			width: 300px;
@@ -41,23 +41,22 @@
 		}
 		.text3{  /* 提交按钮的样式 */
 			width: 300px;
-			height: 35px;
+			height: 43px;
 			font-size: 22px;
-			font-family: 微软雅黑;
-			background: orange;
+			font-family: 隶书;
+			background: #cc8e1d;
 			border-radius: 5px;
 		}
 		.text3:hover{
 			background: darksalmon;
 		}
 		.text1,.text2,.text3{
-			border: 1px solid #006400;
+			border: 2px solid #0d150d;
 		}
 </style>
 <body>
 	<include src="head.jsp"></include>
-
-	<script type="text/javascript ">
+    <script type="text/javascript ">
 			function account(obj){
 				console.log(obj);
 				let ul=obj.getElementsByTagName('ul')[0];
@@ -67,15 +66,15 @@
 					ul.classList.remove('active');
 				}
 			}
-		</script>
-
+		</script> 
 	 <div class="div1">
 		 <br><br>
   <h1>创建二级课程</h1>
+  <br>
   <hr>
-  
+  <br>
   <form action="addsecond-action" method="post">
-  <h3>请选择一级课程：</h3>
+  <h3>请选择一级课程：</h3><br>
 	<select name="second.first_id" class="select1">
 		<c:forEach items="${firstlist}" var="u" varStatus="vs">
 			<option value="${u.first_id}">${u.first_name}</option>

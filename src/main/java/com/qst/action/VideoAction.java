@@ -120,7 +120,8 @@ public class VideoAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();  //定义session来存放数据
 		videolist = coursedao.selectAllVideo(video);
-		if(videolist!=null) {
+		if(!videolist.isEmpty()) {
+			video = coursedao.selectVideo(videolist.get(0));
 			session.setAttribute("videolist", videolist);
 			showfirstVideo();
 			return "success";
@@ -161,8 +162,8 @@ public class VideoAction extends ActionSupport {
 	/* 获取videolist里面第一个播放地址函数 */
 	public  GetPlayInfoResponse getPlayInfo1(DefaultAcsClient client) throws Exception {
 		GetPlayInfoRequest request = new GetPlayInfoRequest();
-		System.out.println(video.getVideo_id()+".....video_id");
 		request.setVideoId(videolist.get(0).getVideo_id());
+		System.out.println(video.getVideo_desc()+".....video_desc");
 		return client.getAcsResponse(request);
 	}
 	

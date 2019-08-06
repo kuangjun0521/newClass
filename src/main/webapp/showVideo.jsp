@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.css" />
 <script src="js/include.js" type="text/javascript" charset="utf-8"></script>
 
@@ -18,10 +17,13 @@
 		 }
 		 .bigdiv{  /* 左边导航栏 */
 			 border: 1px solid #008000;
-			 margin-left: 180px; 
+			 margin-left: 150px; 
 			 height: 500px;
 			 overflow: scroll;
 			 
+		 }
+		 .bigdiv1{
+		 float:left;
 		 }
 		 .title{
 			 font-size: 24px;
@@ -31,11 +33,11 @@
 			 margin-left: -15px;
 			 padding-left: 20px;
 		 }
-		 .col-lg-7{ /* 右边视频播放样式 */
-			padding-left:100px;
-		 }
 		 .foreach{
 			 padding-top: 10px;
+		 }
+		 .foreach li{
+			 padding-left: 20px;
 		 }
 		 .lia{
 			 font-size: 20px;
@@ -50,30 +52,45 @@
 		 font-size:20px;
 		 }
 		 video{
-		 margin-top:-50px;
+		 margin-top:-40px;
 		 }
 	</style>
 <body>
 <%-- <a href="${url }">Play a video file</a> --%>
 <include src="head.jsp"></include>
+<script type="text/javascript ">
+			function account(obj){
+				console.log(obj);
+				let ul=obj.getElementsByTagName('ul')[0];
+				if(ul.className=='dropdown-links'){
+					ul.classList.add('active');
+				}else{
+					ul.classList.remove('active');
+				}
+			}
+		</script> 
 		<br>
-		<div class="col-lg-5 col-md-5 bigdiv" style="width:380px;">
+		<div class="bigdiv1">
+		<div class="bigdiv" style="width:380px;">
 			<div class="title">视&nbsp;频&nbsp;列&nbsp;表<i class="fa fa-angle-down" style="padding-left: 200px;"></i></div>
 			
 			<div class="foreach">
 			<c:forEach items="${videolist}" var="u" varStatus="vs">
 				<c:if test="${u.id eq video.id }">
 					<li class="lia"><a href="showVideo-action?video.id=${u.id}">${u.video_desc}</a><i class="fa fa-pause-circle"></i></li>
+					<br>
 					<hr />
 				</c:if>
 				<c:if test="${u.id ne video.id }">
 					<li class="lia"><a href="showVideo-action?video.id=${u.id}">${u.video_desc}</a><i class="fa fa-youtube-play"></i></li>
+					<br>
 					<hr />
 				</c:if>
 			</c:forEach>
 		</div>
 		</div>
-		<div class="col-lg-7 col-md-7" style="padding-left:100px;">
+		</div>
+		<div class="bigdiv1" style="padding-left:100px;">
 			<span>${video.video_desc}</span><br>
 			<video width="520" height="520" controls="controls">
 				<source src="${url }" type="video/ogg" />

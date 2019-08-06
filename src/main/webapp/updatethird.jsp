@@ -96,6 +96,13 @@
 </style>
 <body>
 	<include src="head.jsp"></include>
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<!-- stats -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.countup.js"></script>
+	<script src="js/owl.carousel.js"></script>
 	<br>
 	<div class="center">
 		<br>

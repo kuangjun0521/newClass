@@ -39,4 +39,6 @@ public interface CourseDao {
 	
 	//播放视频
 	public Video selectVideo(Video video);
+	
+	
 }
