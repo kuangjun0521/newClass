@@ -16,4 +16,7 @@ public interface UserDao {
 	public User selectUser(User user);
 	//注册
 	public void addUser(User user);
+	
+	//更新用户信息
+	public void updateUser(User user);
 }

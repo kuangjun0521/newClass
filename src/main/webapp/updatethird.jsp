@@ -18,7 +18,7 @@
 	border-radius: 10px;
 	box-shadow: 0px 1px 25px 5px #808080;
 	margin-top: 10px;
-	height: 600px;
+	height: 700px;
 }
 
 .select1 { /* 下拉框 */
@@ -30,12 +30,12 @@
 
 .text2 { /* 课程名称的样式 */
 	width: 120px;
-	height: 37px;
+	height: 43px;
 	border-bottom-left-radius: 5px;
 	border-top-left-radius: 5px;
-	background: #F0AD4E;
+	background: #e4caa5;
 	font-size: 16px;
-	padding-top: 3px;
+	padding-top: 2px;
 	font-family: 微软雅黑;
 }
 
@@ -48,13 +48,21 @@
 	padding-top: 1px;
 	font-family: 微软雅黑;
 }
-
+.text4 { /* 下拉文本框的样式 */
+	width: 300px;
+	height: 43px;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	font-size: 18px;
+	padding-top: 0px;
+	font-family: 微软雅黑;
+}
 .text3 { /* 提交按钮的样式 */
 	width: 300px;
 	height: 38px;
 	font-size: 22px;
 	font-family: 微软雅黑;
-	background: orange;
+	background: #daccb3;
 	border-radius: 5px;
 }
 
@@ -63,54 +71,55 @@
 }
 
 .text1, .text2, .text3,.text5 {
-	border: 1px solid #006400;
+	border: 2px solid #545f54;
 }
-
- #picture_src { /*  将图片地址显示文本框和选择文件按钮重叠  */
-	position: absolute;
-} 
-
-#file { /* 把选择文件按钮设置为透明 */
+ 
+ #file { 
+	width:293px;
 	
-	opacity: 0; /* 最关键的地方  把input设置成透明，这样只能看到按钮 */
 }
-
+ 
 .tijiao1 { /* 提交图片按钮 */
-	width: 40px;
-	height: 37px;
+	width: 45px;
+	height: 43px;
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
 	border: 1px solid #008000;
 	padding-top: 5px;
 	margin-left: 260px;
 	z-index:9999;
+	background:#b7acac;
 }
-.text5 { /* 图片选择输入框样式 */
-	width: 265px;
-	height: 37px;
-	font-size: 18px;
-	padding-top: 1px;
-	font-family: 微软雅黑;
-	
+img{/* 图片大小显示 */
+width:140px;
+height:107px;
+position:absolute;
+padding-left:50px;
 }
 </style>
 <body>
 	<include src="head.jsp"></include>
-	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<!-- stats -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.countup.js"></script>
-	<script src="js/owl.carousel.js"></script>
+		<script type="text/javascript ">
+			function account(obj){
+				console.log(obj);
+				let ul=obj.getElementsByTagName('ul')[0];
+				if(ul.className=='dropdown-links'){
+					ul.classList.add('active');
+				}else{
+					ul.classList.remove('active');
+				}
+			}
+		</script> 
 	<br>
 	<div class="center">
 		<br>
 		<h1>更新课程</h1>
+		<br>
 		<hr />
-		<form action="updatethird-action" method="post"
+		<br>
+		<form action="uploadImage1" method="post"
 			enctype="multipart/form-data">
-			<input type="hidden" name="course.third_id" value="${course.third_id}">
+			<input type="hidden" name="course.third_id" value="${course.third_id }" />
 			<input type="hidden" name="course.user_id" value="${user1.user_id }" />
 			<input type="button" value="课程名称" class="text2" /><input type="text"
 				name="course.course_name" class="text1" value="${course.course_name }"><br> <br>
@@ -121,13 +130,18 @@
 			<input type="button" value="课程所属" class="text2" /><input type="text"
 				name="course.course_type" class="text1" value="${course.course_type }"><br> <br>
 				
+			<input type="button" value="旧图片" class="text2" style="position:relative;margin-left:-300px;"/>
+			<img src="${course.course_img}"/><br><br><br><br>
+			<input type="hidden" name="course.course_img" class="text5" id="picture_src" value="${course.course_img}">
+			<input type="button" value="新图片" class="text2" />
 			
-			<input type="button" value="封面图片" class="text2" /><input type="text" name="course.course_img" class="text5" id="picture_src" value="${course.course_img }">
-			<input type="button"  onClick="imgSubmit()" value="提交" class="tijiao1">
-			<br> <input type="file" name="file" id="file"
-				accept="image/*" /> <input type="button"
+			<!-- <input type="button"  onClick="imgSubmit()" value="提交" class="tijiao1"> -->
+			 <input type="file" name="myFile" id="file"
+				accept="image/*" /> <br>
+				<br>
+				<input type="button"
 				value="二级课程" class="text2" /><select name="course.second_id"
-				class="text1">
+				class="text4">
 				<c:forEach items="${secondlist}" var="u" varStatus="vs">
 
 					<option value="${u.second_id}">${u.second_name}</option>

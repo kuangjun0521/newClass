@@ -5,29 +5,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css"
-	href="font-awesome-4.7.0/css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.css" />
 <script src="js/include.js" type="text/javascript" charset="utf-8"></script>
 <title>Insert title here</title>
 </head>
 <style>
 table {
-	margin-left: 350px;
-	margin-top: 20px;
-}
-
-i {
-	color: orange;
+	margin:0 auto;
+	margin-top: 40px;
+	width:70%;
 }
 
 .text-c {
-	font-size: 20px;
+	font-size: 18px;
 	color: #fff;
-	background-color: lightblue;
+	background-color: #364a50;
 }
 
 .text-d {
-	line-height: 30px;
+	line-height: 25px;
+	font-size:14px;
+	font-family:华文彩云;
+}
+.th1{
+/* 表名样式 */
+background:#918e9a;
 }
 </style>
 <body>
@@ -45,22 +47,23 @@ i {
 			}
 		</script>
 
-	<table border="1" cellspacing="0" width="50%" text-align="center">
+	<table border="1" cellspacing="0" text-align="center">
 		<thead>
 			<tr>
-				<th scope="col" colspan="2"
-					style="font-size: 24px; background-color: lightblue; color: #fff;">一级课程信息表</th>
+				<th scope="col" colspan="3" class="th1">一级课程信息表</th>
 			</tr>
 			<tr class="text-c">
-				<th>一级课程名称</th>
+			<th>ID</th>
+				<th>课程名称</th>
 				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${firstlist1}" var="u" varStatus="vs">
+			<c:forEach items="${firstlist}" var="u" varStatus="vs">
 				<tr class="text-d">
+				<th>${ u.first_id}</th>
 					<th>${ u.first_name}</th>
-					<th><a href="updatefirst-action?first.first_id=${u.first_id}"><i
+					<th><a href="selectonefirst-action?first.first_id=${u.first_id}"><i
 							class="fa fa-pencil-square-o"></i></a> /<a
 						href="deletefirst-action?first.first_id=${u.first_id }"><i
 							class="fa fa-trash"></i></a></th>
@@ -71,26 +74,28 @@ i {
 	</table>
      
      
-     <table border="1" cellspacing="0" width="50%" text-align="center">
+     <table border="1" cellspacing="0" text-align="center">
 		<thead>
 			<tr>
-				<th scope="col" colspan="2"
-					style="font-size: 24px; background-color: lightblue; color: #fff;">二级课程信息表</th>
+				<th scope="col" colspan="4" class="th1">二级课程信息表</th>
 			</tr>
 			<tr class="text-c">
-				<th>二级课程名称</th>
+			    <th>ID</th>
+				<th>课程名称</th>
+				<th>一级ID</th>
 				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${secondlist1}" var="u" varStatus="vs">
+			<c:forEach items="${secondlist}" var="u" varStatus="vs">
 				<tr class="text-d">
-				    <th></th>
+				    <th>${u.second_id}</th>
 					<th>${ u.second_name}</th>
+					<th>${ u.first_id}</th>
 					<th><a
-						href="updatesecond-action?second.second_id=${u.second_id}"><i
+						href="selectonesecond-action?second.second_id=${n.second_id}"><i
 							class="fa fa-pencil-square-o"></i></a> /<a
-						href="deletesecond-action?second.second_id=${u.second_id }"><i
+						href="deletesecond-action?second.second_id=${n.second_id }"><i
 							class="fa fa-trash"></i></a></th>
 				</tr>
 			</c:forEach>
@@ -99,32 +104,40 @@ i {
 	</table>
 	
 	
-	    <table border="1" cellspacing="0" width="50%" text-align="center">
+	    <table border="1" cellspacing="0" text-align="center">
 		<thead>
 			<tr>
-				<th scope="col" colspan="2"
-					style="font-size: 24px; background-color: lightblue; color: #fff;">二级课程信息表</th>
+				<th scope="col" colspan="7" class="th1">三级课程信息表</th>
 			</tr>
 			<tr class="text-c">
-				<th>三级课程名称</th>
+			<th>ID</th>
+			<th>课程名称</th>
+			<th>课程描述</th>
+				<th>讲师</th>
+				<th>所属</th>
+				<th>二级ID</th>
 				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${courselist1}" var="u" varStatus="vs">
+			<c:forEach items="${courselist}" var="u" varStatus="vs">
 				<tr class="text-d">
-				    <th></th>
-					<th>${ u.course_name}</th>
-					<th><a
-						href="updatecourse-action?course.third_id=${u.third_id}"><i
-							class="fa fa-pencil-square-o"></i></a> /<a
-						href="deletecourse-action?course.third_id=${u.third_id }"><i
+				    <th>${u.third_id}</th>
+				    <th>${u.course_name }</th>
+				    <th>${u.course_desc }</th>
+				    <th>${u.course_teacher }</th>
+				    <th>${u.course_type }</th>
+					<th>${ u.second_id}</th>
+					<th><a href="selectonethird-action?course.third_id=${u.third_id}"><i
+							class="fa fa-pencil-square-o"></i></a> /
+			<a href="deletethird-action?course.third_id=${u.third_id }"><i
 							class="fa fa-trash"></i></a></th>
 				</tr>
 			</c:forEach>
 
 		</tbody>
 	</table>
+	<br><br><br>
 	<include src="footer.jsp"></include>
 </body>
 </html>

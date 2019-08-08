@@ -6,9 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="js/include.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <style>
+.bigdiv{
+height:300px;
+}
 .center {
 	text-align: center;
 	border: 1px solid #f9f9f9;
@@ -16,9 +20,10 @@
 	margin: 0 auto;
 	border-radius: 10px;
 	box-shadow: 0px 1px 25px 5px #808080;
+	margin-top:30px;
 }
 
-input {
+.input1 { /* 视频描述样式 */
 	width: 200px;
 	height: 20px;
 	border-radius: 5px;
@@ -26,29 +31,47 @@ input {
 }
 
 .button {
-	background: orange;
+	background: #bf9649;
 	color: #FFFFFF;
-	height: 30px;
+	height: 40px;
+	width:180px;
+	border-radius: 5px;
+	font-size: 20px;
+}
+.center span{
+font-size:18px;
+}
+.center select{
+width:110px;
+height:30px;
 }
 </style>
 <body>
 	<include src="head.jsp"></include>
-<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript ">
+			function account(obj){
+				console.log(obj);
+				let ul=obj.getElementsByTagName('ul')[0];
+				if(ul.className=='dropdown-links'){
+					ul.classList.add('active');
+				}else{
+					ul.classList.remove('active');
+				}
+			}
 
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<!-- stats -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.countup.js"></script>
-	<script src="js/owl.carousel.js"></script>
+
+		</script> 
+		<div class="bigdiv">
 	<div class="center">
-		<p>视频上传</p>
+	<br>
+		<h2>视频上传</h2>
 		<br>
 
-		<form action="uploadVideo-action" method="post">
+		<form action="uploadVideo-action" method="post" enctype="multipart/form-data">
 
-			视频描述：<input type="text" name="video.video_desc" /><br>
+			<span>视频描述：</span><input type="text" name="video.video_desc" class="input1"/><br>
 			<br> 
-			视频上传：<input type="text" name="video.video_address" /><br>
+			<span style="margin-left:50px;">视频上传：</span><input type="file" id="myfile" name="myFile" class="input2"/><br>
 			<br> 
 			<select name="video.third_id" class="text1">
 				<c:forEach items="${courselist}" var="u" varStatus="vs">
@@ -63,5 +86,22 @@ input {
 		<br>
 
 	</div>
+	</div>
+		<include src="footer.jsp"></include>
+		
+		<script type="text/javascript">
+		function setBlogrollImageName(){
+			 if(document.getElementByIdx_x('myfile').files) { 
+			        // Support: nsIDOMFile, nsIDOMFileList 
+			        alert('value: ' + document.getElementByIdx_x('myfile').value); 
+			        alert('files.length: ' + document.getElementByIdx_x('myfile').files.length); 
+			        alert('fileName: ' + document.getElementByIdx_x('myfile').files.item(0).fileName); 
+			        alert('fileSize: ' + document.getElementByIdx_x('myfile').files.item(0).fileSize); 
+			        alert('dataurl: ' + document.getElementByIdx_x('myfile').files.item(0).getAsDataURL()); 
+			        alert('data: ' + document.getElementByIdx_x('myfile').files.item(0).getAsBinary()); 
+			        alert('datatext: ' + document.getElementByIdx_x('myfile').files.item(0).getAsText("utf-8")); 
+			    }; 
+			};
+		</script>
 </body>
 </html>

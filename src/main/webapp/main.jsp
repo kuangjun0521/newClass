@@ -10,7 +10,7 @@
 <style>
 	.small_img{  /* 图片样式 */
 			width: 22%;
-			height: 150px;
+			height: 200px;
 			float: left;
 			margin-left: 20px;
 		}
@@ -28,15 +28,15 @@
 		
 
 <div class="middle"> 
-<img src="img/headline.jpg" style="height: 300px; width:100%;" />
+<img src="img/img1.jpg" style="height: 300px; width:100%;" />
 
 
 <h3 style="text-align: center; margin-top: 40px;">精品课程</h3>
 <div class="small">
-	<img src="img/fileUpload.JPG" class="small_img"/>
-	<img src="img/hibernate.JPG" class="small_img"/>
-	<img src="img/mybatis.JPG" class="small_img"/>
-	<img src="img/struts2.JPG" class="small_img"/>
+	<img src="img/java1.jpg" class="small_img"/>
+	<img src="img/java2.jpg" class="small_img"/>
+	<img src="img/java3.jpg" class="small_img"/>
+	<img src="img/java4.jpg" class="small_img"/>
 	</div>
 	</div>
 	

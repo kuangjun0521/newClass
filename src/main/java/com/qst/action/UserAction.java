@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,10 @@ public class UserAction extends ActionSupport{
 	CourseDao coursedao;
 	
 	User user;
-	HttpServletRequest request;
-	HttpSession session;
+	 //将所有信息存入session之中
+	HttpServletRequest request = ServletActionContext.getRequest();
+      //定义session来存放数据;
+	HttpSession session = request.getSession();
 
 	public UserAction() {
 		super();
@@ -51,19 +54,12 @@ public class UserAction extends ActionSupport{
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+    
 	public String login(){
 		
 		if(!user.getMail().equals("")&&!user.getPassword().equals("")) {
 		User user1 = userdao.checkLogin(user);
 		if(user1!=null) {
-			//将所有信息存入session之中
-            request = ServletActionContext.getRequest();
-            session = request.getSession();  //定义session来存放数据
-			ActionContext ac = ActionContext.getContext();
-			ac.getSession().put("user1", user1);
-			
-			if(user1.getUser_id()==1) {
 				//当角色为管理员时
 				List<First> firstlist = firstdao.selectFirst();//将所有信息存入
 				List<Second> secondlist = firstdao.selectSecond();
@@ -72,10 +68,7 @@ public class UserAction extends ActionSupport{
 			    session.setAttribute("secondlist", secondlist);
 			    session.setAttribute("courselist", courselist);
 			    session.setAttribute("user1", user1);
-				return "main";
-			}else {
 				return "success";
-			}
 		}
 			return "login";
 		}
@@ -97,18 +90,11 @@ public class UserAction extends ActionSupport{
 			return "register";
 
 	}
-	@Override
-	public void validate() {
-		
-		//super.validate();
-		if(user.getMail().equals("")) {
-			this.addFieldError("user.mail", "邮箱名不能为空！");
-		}
-		if(user.getPassword().equals("")){
-			this.addFieldError("user.password", "密码不能为空！");
-		}
-		
-	}
 	
-
+public String updateMy() {
+	userdao.updateUser(user);
+	JOptionPane.showMessageDialog(null,"成功保存！");
+	session.setAttribute("user1", user);
+	return "success";
+}
 }

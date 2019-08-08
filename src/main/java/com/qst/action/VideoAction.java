@@ -1,5 +1,6 @@
 package com.qst.action;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -20,7 +21,9 @@ import com.aliyuncs.vod.model.v20170321.GetPlayInfoResponse;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.qst.dao.CourseDao;
+import com.qst.pojo.Course;
 import com.qst.pojo.Video;
+import com.qst.utils.FileUtil;
 
 public class VideoAction extends ActionSupport {
 
@@ -32,8 +35,20 @@ public class VideoAction extends ActionSupport {
 	@Autowired
 	CourseDao coursedao;
 	
+	private File myFile;
+	private String myFileFileName;
 	Video video;
 	List<Video> videolist;
+	Course course;
+	
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
 	public List<Video> getVideolist() {
 		return videolist;
 	}
@@ -54,19 +69,35 @@ public class VideoAction extends ActionSupport {
 		this.video = video;
 	}
 
+	public File getMyFile() {
+		return myFile;
+	}
+	public void setMyFile(File myFile) {
+		this.myFile = myFile;
+	}
+	public String getMyFileFileName() {
+		return myFileFileName;
+	}
+	public void setMyFileFileName(String myFileFileName) {
+		this.myFileFileName = myFileFileName;
+	}
+	
 	// 账号AK信息请填写(必选)
 	private static final String accessKeyId = "LTAIbOlg7PmBMn0D";
 	// 账号AK信息请填写(必选)
 	private static final String accessKeySecret = "aIx1dbs9FqX7eUkVQST0Tpmq0J6v88";
 
 	public String uploadVideo() {
-
+		System.out.println(myFile);
+		
+		String path = "E:\\work\\"+myFileFileName;
+		
 		// 视频标题(必选)
 		String title = video.getVideo_desc();
 		System.out.println(title+"=====");
 		// 1.本地文件上传和文件流上传时，文件名称为上传文件绝对路径，如:/User/sample/文件名称.mp4 (必选)
 		// 任何上传方式文件名必须包含扩展名
-		String fileName = video.getVideo_address();
+		String fileName = path;
 		System.out.println(fileName+"[[[[");
 		// 本地文件上传
 		testUploadVideo(accessKeyId, accessKeySecret, title, fileName);
@@ -123,6 +154,8 @@ public class VideoAction extends ActionSupport {
 		if(!videolist.isEmpty()) {
 			video = coursedao.selectVideo(videolist.get(0));
 			session.setAttribute("videolist", videolist);
+			session.setAttribute("course1", course);
+			System.out.println(course.getCourse_name()+"name");
 			showfirstVideo();
 			return "success";
 		}else {

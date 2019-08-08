@@ -198,13 +198,13 @@ public class CourseAction extends ActionSupport{
 	
 	
 	//添加新的三级课程
-		public String addthird() {
+		/*public String addthird() {
          System.out.println(course.getCourse_img()+"图片地址");
 		  coursedao.addCourse(course);
 		  JOptionPane.showMessageDialog(null,"创建成功了哦！");
 		  return "success";
-				/*return "error";*/
-		}
+				return "error";
+		}*/
 		
 		//查询所有的三级课程
 		public String selectthird() {
@@ -284,11 +284,11 @@ public class CourseAction extends ActionSupport{
 				}
 				
 				//更新一个三级课程
-				public String updateOneThird() {
+			/*	public String updateOneThird() {
 					firstdao.updateOneThird(course);
 					selectAllClass();
 					return "success";
-				}
+				}*/
 				
 				//删除一个一级课程
 				public String deleteOneFirst() {

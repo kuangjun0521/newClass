@@ -23,17 +23,17 @@
 		}
 		.text2{  /* 课程名称的样式 */
 			width: 130px;
-			height: 39px;
+			height: 43px;
 			border-bottom-left-radius: 5px;
 			border-top-left-radius: 5px;
-			background: orange;
+			background: #ad3c3c;
 			font-size: 16px;
 			font-family: 微软雅黑;
-			padding-top: 3px;
+			padding-top: 2px;
 		}
 		.text1{ /* 输入文本框的样式 */
 			width: 300px;
-			height: 39px;
+			height: 37px;
 			border-bottom-right-radius: 5px;
 			border-top-right-radius: 5px;
 			font-size: 18px;
@@ -44,35 +44,40 @@
 			height: 35px;
 			font-size: 22px;
 			font-family: 微软雅黑;
-			background: orange;
+			background: #b34827;
 			border-radius: 5px;
 		}
 		.text3:hover{
 			background: darksalmon;
 		}
 		.text1,.text2,.text3{
-			border: 1px solid #006400;
+			border: 2px solid #484c48;
 		}
 </style>
 <body>
 	<include src="head.jsp"></include>
 
-	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<!-- stats -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.countup.js"></script>
-	<script src="js/owl.carousel.js"></script>
+	<script type="text/javascript ">
+			function account(obj){
+				console.log(obj);
+				let ul=obj.getElementsByTagName('ul')[0];
+				if(ul.className=='dropdown-links'){
+					ul.classList.add('active');
+				}else{
+					ul.classList.remove('active');
+				}
+			}
+		</script> 
 
 	 <div class="div1">
 		 <br><br>
   <h1>更新二级课程</h1>
+  <br>
   <hr>
-  
+  <br>
   <form action="updatesecond-action" method="post">
   <input type="hidden" name="second.second_id" value="${second.second_id}">
-  <h3>请选择一级课程：</h3>
+  <h3>请选择一级课程：</h3><br>
 	<select name="second.first_id" class="select1">
 		<c:forEach items="${firstlist}" var="u" varStatus="vs">
 			<option value="${u.first_id}">${u.first_name}</option>

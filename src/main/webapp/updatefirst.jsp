@@ -16,19 +16,19 @@
 		}
 		.text2{  /* 课程名称的样式 */
 			width: 100px;
-			height: 37px;
+			height: 42px;
 			border-bottom-left-radius: 5px;
 			border-top-left-radius: 5px;
-			background: #F0AD4E;
-			font-size: 18px;
+			background: #a0b335;
+			font-size: 20px;
 			font-family: 微软雅黑;
 		}
 		.text1{ /* 输入文本框的样式 */
 			width: 300px;
-			height: 37px;
+			height: 34px;
 			border-bottom-right-radius: 5px;
 			border-top-right-radius: 5px;
-			padding-top: 0px;
+			padding-top: 3px;
 			font-size: 18px;
 			font-family: 微软雅黑;
 		}
@@ -36,26 +36,28 @@
 			width: 300px;
 			height: 35px;
 			font-size: 24px;
-			font-family: 微软雅黑;
-			background: orange;
+			background: #bad8bb;
 			border-radius: 5px;
 		}
 		.text1,.text2,.text3{
-			border: 1px solid #006400;
+			border: 2px solid #006400;
 		}
 </style>
 <body>
 	<include src="head.jsp"></include>
+<script type="text/javascript ">
+			function account(obj){
+				console.log(obj);
+				let ul=obj.getElementsByTagName('ul')[0];
+				if(ul.className=='dropdown-links'){
+					ul.classList.add('active');
+				}else{
+					ul.classList.remove('active');
+				}
+			}
+		</script> 
 
-	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<!-- stats -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.countup.js"></script>
-	<script src="js/owl.carousel.js"></script>
-
-	<br>
+	<br><br>
 
 	
 	<form action="updatefirst-action" method="post">

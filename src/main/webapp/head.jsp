@@ -12,7 +12,7 @@
 	<style>
 		*{
 			margin: 0;
-			/* //padding: 0; */ /* 边距为0 */
+			/* //padding: 0; */ /* 边距为775无20 */
 		}
 			.header{
 			background:#3a3838;
@@ -43,14 +43,14 @@
 		}
 		.navbar-right {
 		    margin-top:-20px;
-			padding-left:750px;
+			padding-left:720px;
 			
 		}
 		.navbar-nav>li>a{
 			color: #fff;
   			display: block;
   			font-size:18px;
-  			margin-left:15px;
+  			margin-left:6px;
   			font-family:华文隶书;
 		}
 		.navbar-nav>li>a:hover{
@@ -117,14 +117,19 @@
 	 <div class="header">
 			<nav>
 			<ul class="nav navbar-nav navbar-left">
-						<h2>New Class</h2>
+						<h2>德 创 学 堂</h2>
 			</ul>
 					<ul class="nav navbar-nav navbar-right">
+
+									<li class="login">
+										<a href="main.jsp">首页</a>
+									</li>
+									
 						<li class="classes">
 						           
 										<a href="selectClass-action">课程</a>
 									</li>
-									
+						<c:if test="${user1.privilege==1}">
 						<li class="add" onclick="account(this)">
 										<a href="javascript:;">开设课程<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown-links">
@@ -140,15 +145,28 @@
 											</li>
 										</ul>
 									</li>
+									</c:if>
+									<c:if test="${user1.privilege==1}">
+									<li class="login">
+										<a href="selectAllClass-action">后台管理</a>
+									</li>
+									</c:if>
+									<c:if test="${user1.user_name==null}">
 									<li class="login">
 										<a href="login.jsp">登录/注册</a>
 									</li>
+									</c:if>
+									<c:if test="${user1.privilege==2}">
+									<li class="login">
+										<a href="myinformation.jsp">个人中心</a>
+									</li>
+									</c:if>
 									<li class="register">
 									<c:if test="${user1.user_name==null}">
 									<a href="#">游客,欢迎你！</a>
 									</c:if>
 									<c:if test="${user1.user_name!=null}">
-									<a href="#">${user1.user_name},欢迎你！</a>
+									<a href="login.jsp">${user1.user_name},欢迎你！</a>
 									</c:if>
 										
 									</li>

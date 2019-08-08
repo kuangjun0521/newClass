@@ -20,18 +20,22 @@
 			 margin-left: 150px; 
 			 height: 500px;
 			 overflow: scroll;
+			 border-radius:10px;
 			 
 		 }
 		 .bigdiv1{
 		 float:left;
 		 }
 		 .title{
-			 font-size: 24px;
+			 font-size: 30px;
 			 width: 400px;
 			 height: 40px;
-			 background: #F8C01B;
+			 background: #53a039;
 			 margin-left: -15px;
 			 padding-left: 20px;
+			 font-family:华文彩云;
+			 color:#000;
+			 
 		 }
 		 .foreach{
 			 padding-top: 10px;
@@ -42,17 +46,19 @@
 		 .lia{
 			 font-size: 20px;
 			 font-family: 微软雅黑;
+			 padding-top:10px;
 		 }
 		 .lia i{ /* 播放图标 */
 			 padding-left: 50px;
 			 font-size: 20px;
-			 color: coral;
+			 color: #1f8427;
 		 }
 		 span{
 		 font-size:20px;
 		 }
-		 video{
-		 margin-top:-40px;
+		 .bigdiv .title{
+		 padding-top:10px;
+		 
 		 }
 	</style>
 <body>
@@ -71,8 +77,8 @@
 		</script> 
 		<br>
 		<div class="bigdiv1">
-		<div class="bigdiv" style="width:380px;">
-			<div class="title">视&nbsp;频&nbsp;列&nbsp;表<i class="fa fa-angle-down" style="padding-left: 200px;"></i></div>
+		<div class="bigdiv" style="width:350px;">
+			<div class="title">&nbsp;&nbsp;${course1.course_name}<i class="fa fa-angle-down" style="padding-left: 150px;"></i></div>
 			
 			<div class="foreach">
 			<c:forEach items="${videolist}" var="u" varStatus="vs">
@@ -91,7 +97,6 @@
 		</div>
 		</div>
 		<div class="bigdiv1" style="padding-left:100px;">
-			<span>${video.video_desc}</span><br>
 			<video width="520" height="520" controls="controls">
 				<source src="${url }" type="video/ogg" />
 				<source src="${url }" type="video/mp4" />

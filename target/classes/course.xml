@@ -63,7 +63,7 @@
      </action>
      
    <!--   后台管理查询所有的课程 -->
-      <action name="selectAllClass-action" class="com.qst.action.CourseAction" method="selectMyClass">
+      <action name="selectAllClass-action" class="com.qst.action.CourseAction" method="selectAllClass">
        <!-- 成功和失败的跳转 -->
        <result name="success">/adminAllClass.jsp</result>
      </action>
@@ -139,15 +139,28 @@
        <result name="success">/selectClass.jsp</result>
      </action>
      
-     <!-- 传图片 -->
-     		<action name="uploadImage" class="com.qst.action.ImageAction" method="uploadImage">
+     <!-- 传图片 添加三级课程-->
+     		<action name="uploadImage" class="com.qst.action.ImageAction" method="addthird">
      	 	<interceptor-ref name="defaultStack"/>
             <interceptor-ref name="fileUpload">
                 <param name="allowedTypes">image/jpeg,image/jpg,image/gif,image/png,image/mp4</param>
             </interceptor-ref> 
-			<result name="success" type="json">
+			<!-- <result name="success" type="json">
 				<param name="root">map</param>
-			</result>
+			</result> -->
+			 <result name="success">/addthirdMenu.jsp</result>
+		</action>
+		
+		<!-- 修改三级课程 -->
+		<action name="uploadImage1" class="com.qst.action.ImageAction" method="updateOneThird">
+     	 	<interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="fileUpload">
+                <param name="allowedTypes">image/jpeg,image/jpg,image/gif,image/png,image/mp4</param>
+            </interceptor-ref> 
+			<!-- <result name="success" type="json">
+				<param name="root">map</param>
+			</result> -->
+			 <result name="success">/adminAllClass.jsp</result>
 		</action>
 	</package>
 	<!-- Add packages here -->

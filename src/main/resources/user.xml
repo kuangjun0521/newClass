@@ -13,31 +13,37 @@
 	<!-- name解决多个命名重复问题 namespace相当于springmvc中的控制层类之上的@RequestMapping()-->
 	<package name="loginAction" namespace="/" extends="struts-default">
        
-       <!-- 用户名密码登录 -->
+       <!-- 邮箱密码登录 -->
      <action name="login-action" class="com.qst.action.UserAction" method="login">
        <result name="login">/login.jsp</result> <!-- 成功和失败的跳转 -->
-       <result name="main">/main.jsp</result>
-       <result name="success">/success.jsp</result>
-       <result name="input">/login.jsp</result>
+       <result name="success">/main.jsp</result>
        
      </action>
     
           <!-- 用户注册 -->
    <action name="register-action" class="com.qst.action.UserAction" method="register">
        <!-- 成功和失败的跳转 -->
-       <result name="index">/index.jsp</result>
        <result name="success">/login.jsp</result>
         <result name="register">/register.jsp</result>
-        <result name="input">/register.jsp</result>
        
      </action>
+     
+              <!-- 个人信息显示 -->
+   <action name="selectself-action" class="com.qst.action.UserAction" method="selectMy">
+       <!-- 成功和失败的跳转 -->
+       <result name="success">/myinformation.jsp</result>
+     </action>
+     
+                <!-- 个人信息更新 -->
+   <action name="updateuser-action" class="com.qst.action.UserAction" method="updateMy">
+       <!-- 成功和失败的跳转 -->
+       <result name="success">/myinformation.jsp</result>
+     </action>
+     
 <!-- 上传视频 -->
  <action name="uploadVideo-action" class="com.qst.action.VideoAction" method="uploadVideo">
        <!-- 成功和失败的跳转 -->
-       <result name="index">/index.jsp</result>
-       <result name="success">/main.jsp</result>
-        <result name="register">/register.jsp</result>
-        <result name="input">/register.jsp</result>
+       <result name="success">/selectClass.jsp</result>
        
      </action>
     
@@ -48,12 +54,10 @@
        <result name="success">/showVideo.jsp</result>
        
      </action> 
+   <!--   显示一个视频 -->
     <action name="showVideo-action" class="com.qst.action.VideoAction" method="showVideo">
        <!-- 成功和失败的跳转 -->
-       <result name="index">/index.jsp</result>
        <result name="success">/showVideo.jsp</result>
-        <result name="register">/register.jsp</result>
-        <result name="input">/register.jsp</result>
        
      </action> 
 	</package>

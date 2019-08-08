@@ -91,7 +91,7 @@ $(function(){
         </div>
         <div id="username">
           <label>邮&nbsp;&nbsp;&nbsp;箱：</label>
-          <input type="text" id="tea_password_hide" name="user_mail" placeholder="输入邮箱"  />
+          <input type="text" id="tea_password_hide" name="user.mail" placeholder="输入邮箱"  />
         </div>
         <div id="password">
         <label>密&nbsp;&nbsp;&nbsp;码：</label>

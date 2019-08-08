@@ -1,3 +1,4 @@
+<%@page import="javax.swing.JOptionPane"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,6 +11,13 @@
 <title>课程</title>
 </head>
 <body>
+<%  
+  Object user = session.getAttribute("user1");  
+  if(user==null){  
+	  JOptionPane.showMessageDialog(null,"您还没登录，请先登录！");
+      response.sendRedirect("main.jsp");  
+  }  
+%>
 	<style>
 /* 左边导航栏 */
 *{
@@ -194,6 +202,9 @@ margin-left:-22px;
   color: #F9F0DA;
 	margin-left: -40px;
 } 
+.fa-trash{
+padding-left:-20px;
+}
 </style>
 
 	<include src="head.jsp"></include>
@@ -221,15 +232,24 @@ margin-left:-22px;
 					<c:forEach items="${firstlist}" var="u" varStatus="vs">
 						<li class="list123">
 							<h2>
-								<i></i><a
-									href="selectbyfirst-action?first.first_id=${u.first_id }">${u.first_name}</a>
+								<i></i><a href="selectbyfirst-action?first.first_id=${u.first_id }">${u.first_name}
+								</a>
+					<%-- 		   <c:if test="${user1.privilege==1 }">
+					<a href="selectonefirst-action?first.first_id=${u.first_id}"><i
+							class="fa fa-pencil-square-o"></i></a> /<a
+						href="deletefirst-action?first.first_id=${u.first_id }"><i
+							class="fa fa-trash"></i></a></c:if> --%>
 							</h2>
 							<div class="hide">
 								<c:forEach items="${secondlist}" var="n" varStatus="vs">
 									<c:if test="${u.first_id eq n.first_id}">
 										<h5>
-											<a
-												href="selectbysecond-action?second.second_id=${n.second_id}">${n.second_name}</a>
+											<a href="selectbysecond-action?second.second_id=${n.second_id}">${n.second_name}</a>
+										<%-- <c:if test="${user1.privilege==1 }"><a
+						href="selectonesecond-action?second.second_id=${n.second_id}"><i
+							class="fa fa-pencil-square-o"></i></a> /<a
+						href="deletesecond-action?second.second_id=${n.second_id }"><i
+							class="fa fa-trash"></i></a></c:if> --%>
 										</h5>
 									</c:if>
 								</c:forEach>
@@ -324,14 +344,14 @@ margin-left:-22px;
 
 				<div class="img1">
 					<span>${cou.course_name}</span><br> <span>${cou.course_desc}</span><br>
-					<a href="showAllVideo-action?video.third_id=${cou.third_id }"><img src="${cou.course_img}" /></a><br> <span>${cou.course_teacher}|</span>
+					<a href="showAllVideo-action?video.third_id=${cou.third_id }&course.course_name=${cou.course_name}"><img src="${cou.course_img}" /></a><br> <span>${cou.course_teacher}|</span>
 					<span>${cou.course_type}</span>
-					<c:if test="${user1.privilege==1 }">
+					<%-- <c:if test="${user1.privilege==1 }">
 						<a href="selectonethird-action?course.third_id=${cou.third_id}"><i
 							class="fa fa-pencil-square-o"></i></a> /
 			<a href="deletethird-action?course.third_id=${cou.third_id }"><i
 							class="fa fa-trash"></i></a>
-					</c:if>
+					</c:if> --%>
 					<br>
 
 				</div>
