@@ -306,6 +306,7 @@ public class CourseAction extends ActionSupport{
 							firstdao.deleteOneSecond(s);  //删除多个二级课程
 						}
 					}
+					JOptionPane.showMessageDialog(null,"删除成功了哦！");
 					selectAllClass();//重新查询一边所有信息
 						return "success";	
 				}
@@ -321,6 +322,7 @@ public class CourseAction extends ActionSupport{
 				    	   firstdao.deleteOneThird(c);
 				       }
 					}
+					JOptionPane.showMessageDialog(null,"删除成功了哦！");
 					selectAllClass();
 					return "success";
 				}
@@ -328,7 +330,9 @@ public class CourseAction extends ActionSupport{
 				//删除一个三级课程
 				public String deleteOneThird() {
 					firstdao.deleteOneThird(course);
+					JOptionPane.showMessageDialog(null,"删除成功了哦！");
 					selectAllClass();
+					
 					return "success";
 				}
 	//上传图片

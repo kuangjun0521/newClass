@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="js/include.js" type="text/javascript" charset="utf-8"></script>
-<title>Insert title here</title>
+<title>主界面</title>
 </head>
 <style>
 	.small_img{  /* 图片样式 */

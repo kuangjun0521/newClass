@@ -1,4 +1,4 @@
-package com.qst.dao;
+﻿package com.qst.dao;
 
 import java.util.List;
 
@@ -22,15 +22,7 @@ public interface CourseDao {
 	//根据输入的课程名称查询课程
 	public List<Course> selectThirdbyText(Course course);
 	
-    //根据管理员id查询到三级课程
-	public List<Course> selectMyCourse(User user);
-	
-	//根据三级课程里面的二级id查询到二级课程
-	public List<Second> selectMySecond(List<Course> course);
-	
-	//根据二级课程里面的一级id查询到一级课程
-	public List<First> selectMyFirst(List<Second> second);
-	
+
 	//上传视频
 	public void insertVideo(Video video);
 	
